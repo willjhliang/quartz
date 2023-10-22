@@ -1,3 +1,41 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+:root {
+    // Custom font
+    --headerFont: "Computer Modern Serif", serif !important;
+    --bodyFont: "Computer Modern Serif", serif !important;
+    --codeFont: "Computer Modern Typewriter", monospace !important;
+}
+
+a.internal {
+    // Remove internal link highlight
+    background-color: transparent;
+}
+
+ul.overflow, ol.overflow {
+    // Make table of contents taller
+    max-height: calc(100vh - 16em);
+}
+
+img {
+    // Center image
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p,
+ul,
+text,
+a,
+tr,
+td,
+li,
+ol,
+ul {
+    // Disable hyphens
+    hyphens: none;
+    --webkit-hyphens: none;
+}

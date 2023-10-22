@@ -1,0 +1,3 @@
+Contextual bandits are a simplified reinforcement learning objective where we have multiple [[🎰 Multi-Armed Bandit]]s, each associated with its own state. Our states change randomly, and the objective is to learn a policy mapping state to action that maximizes total expected reward.
+
+This is an intermediate between the multi-armed bandit, which only cares about which action to take, and the full reinforcement learning problem, which involves a [[🌎 Markov Decision Process]] with states and actions intertwined. The only difference between contextual bandits and MDPs is that our states are chosen randomly, meaning our actions don't affect future state, whereas the full RL problem considers how actions affect future states.

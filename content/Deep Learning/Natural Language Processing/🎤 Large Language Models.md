@@ -1,0 +1,1 @@
+Large language models (LLMs) take in a natural language prompt and output some generated text. Most of these are based on the [[🦾 Transformer]] architecture, pre-trained on internet-scale data, and fine-tuned with [[🤷‍♂️ RLHF]].

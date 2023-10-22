@@ -1,0 +1,10 @@
+The deadly triad is a combination of three reinforcement learning features that makes an algorithm susceptible to divergence. The three requirements are the following:
+1. Function approximation: using some function rather than a table to model value functions. This is required for complex state spaces.
+2. Bootstrapping: updating value targets using existing estimates from the current value predictions. This is commonly used like in [[⌛️ Temporal Difference Learning]] or [[🧨 Dynamic Programming]].
+3. Off-policy sampling: computing value updates using some other distribution other than the target policy defined by the current value estimates. This is required for learning from prior experience without actively interacting with the environment.
+
+The key to this problem is that updates to our approximated value function will affect value predictions for all states; unlike tabular methods, since approximation requires us to compute value using some combination of $\theta$ and state encoding $x(s)$ instead of storing the value directly in a table, updates to $\theta$ intended for a specific $x(s)$ will affect other predictions as well.
+
+If we combine approximation with bootstrapping, we are at risk of the target, which also relies on $\theta$, changing more than the current $x(s)$ update. That is, it's possible for the difference between our bootstrapped target and the current estimate to diverge because an update to $\theta$, which is intended to decrease the difference, changes the target as well. This is also the core danger of semi-gradients, which have no convergence properties unlike standard gradient descent.
+
+However, an on-policy algorithm with function approximation and bootstrapping avoids divergence since after an update, the next update will be precisely for the diverged target, which causes the target to go back to a less diverged state. An off-policy algorithm, on the other hand, has no guarantee for what the next update will be, so it's possible that we'll keep increasing the bootstrapped error and thus diverge.

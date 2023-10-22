@@ -1,0 +1,3 @@
+RT-1 (robotics transformer) is a general transformer model used for imitation learning. The encoder takes in observation images, encodes it with a language-conditioned [[⚙️ EfficientNet]], tokenizes the internal feature map, and passes it through a token learner that significantly decreases the number of significant tokens. The transformer decoder then takes in the reduced tokens and predicts discretized variables for the robot's action.
+
+![[20230331205315.png#invert|500]]

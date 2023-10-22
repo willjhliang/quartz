@@ -8,7 +8,7 @@ export default (() => {
     return (
       <div class={`search ${displayClass ?? ""}`}>
         <div id="search-icon">
-          <p>Search</p>
+          <p>Search Will's Notes</p>
           <div></div>
           <svg
             tabIndex={0}
@@ -32,8 +32,8 @@ export default (() => {
               id="search-bar"
               name="search"
               type="text"
-              aria-label="Search for something"
-              placeholder="Search for something"
+              aria-label="Search Will's Notes"
+              placeholder="Search Will's Notes"
             />
             <div id="results-container"></div>
           </div>
