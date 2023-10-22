@@ -35,7 +35,7 @@ p, ul, text, a, tr, td, li, ol, ul {
 // Edge case for multiline explorer folders
 // Aline arrow to first line of text instead of center
 .folder-container {
-    align-items: start;
+    align-items: start !important;
 }
 .folder-icon {
     margin-top: 6px;
