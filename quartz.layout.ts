@@ -46,9 +46,20 @@ export const defaultContentPageLayout: PageLayout = {
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.ArticleTitle()],
   left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
     Component.Search(),
+    Component.DesktopOnly(Component.Explorer({
+        sortFn: (a, b) => {
+            if ((!a.file && !b.file) || (a.file && b.file)) {
+              // Remove non-alphanumeric except for spaces and dashes
+              return a.displayName.replace(/[^\w\s\-]/gi, '').localeCompare(b.displayName.replace(/[^\w\s\-]/gi, ''))
+            }
+            if (a.file && !b.file) {
+              return -1
+            } else {
+              return 1
+            }
+          },
+    })),
   ],
   right: [],
 }
