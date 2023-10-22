@@ -51,6 +51,7 @@ We can compute gradients in higher dimensions as well. For example, the gradient
 However, we can take advantage of the fact that there is a isomorphism from matrix space $\mathbb{R}^{m \times n}$ to vector space $\mathbb{R}^{mn}$, which allows us to compute the Jacobian just like above.
 
 The following are some useful gradients used in machine learning.
+
 1. 
 $$
 \frac{\partial}{\partial X}f(X)^\top = \left(\frac{\partial f(X)}{\partial X}\right)^\top
