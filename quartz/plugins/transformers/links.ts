@@ -53,6 +53,7 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options> | undefined> =
                 node.properties.className.push(isAbsoluteUrl(dest) ? "external" : "internal")
 
                 // don't process external links or intra-document anchors
+                node.properties.target = "_blank"
                 const isInternal = !(isAbsoluteUrl(dest) || dest.startsWith("#"))
                 if (isInternal) {
                   dest = node.properties.href = transformLink(
