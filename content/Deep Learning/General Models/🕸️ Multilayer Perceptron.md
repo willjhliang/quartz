@@ -3,7 +3,11 @@ Multilayer perceptrons, also called feedforward neural networks, can be seen as 
 
 As before, we want to minimize the loss $J(\theta)$, which can be a [[📌 Norm]] for regression or [[💧 Cross Entropy]] for classification.
 
-Neural networks consists of layers of neurons. Each neuron applies weights to its inputs and runs it through an activation function. $$a = f(Wx + b)$$Its inputs are the outputs of all neurons in the previous layer, and its output is fed to every neuron in the following layer.
+Neural networks consists of layers of neurons. Each neuron applies weights to its inputs and runs it through an activation function. 
+$$
+a = f(Wx + b)
+$$
+Its inputs are the outputs of all neurons in the previous layer, and its output is fed to every neuron in the following layer.
 
 > [!note]
 > Modern neurons use the ReLU activation function $f(x) = \max(0, x)$ for faster derivative calculation during training and to avoid gradient vanishing (the problem with sigmoid), which leaves the network in weird local minima. Other options include sigmoid and tanh.

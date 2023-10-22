@@ -35,7 +35,11 @@ If there is no active trail between $x_i$ and $x_j$ given a set of observed vari
 > All d-separated independences in the graph are independencies in the probability distribution, but it's not guaranteed that all independences in the distribution are represented in the graph.
 
 # I-Maps
-Let $I(p)$ be the set of independencies that hold in distribution $p$, and let $I(G)$ contain all d-separated pairs $(X \perp Y \mid Z)$. We say that a distribution $p$ factorizes over $G$ if it can be factorized over $G$. That is, $$p(x) = \prod_i p(x_i \vert \text{parents}(x_i)).$$
+Let $I(p)$ be the set of independencies that hold in distribution $p$, and let $I(G)$ contain all d-separated pairs $(X \perp Y \mid Z)$. We say that a distribution $p$ factorizes over $G$ if it can be factorized over $G$. That is, 
+$$
+p(x) = \prod_i p(x_i \vert \text{parents}(x_i)).
+$$
+
 
 This is the case when $I(G) \subseteq I(p)$, and we call $G$ an I-map (independency map). Conversely, if $G$ is an I-map for $p$, then $p$ factorizes over $G$.
 

@@ -1,8 +1,16 @@
-Supervised learning learns an accurate model $f$ that maps input $x$ to output label $y$. To do this, we search over a hypothesis class to minimize the loss on the training set, $$\hat{f} = \arg\min_{f \in H} \frac{1}{m}\sum_{i=1}^m J(f(x^{(i)}, y^{(i)})$$
+Supervised learning learns an accurate model $f$ that maps input $x$ to output label $y$. To do this, we search over a hypothesis class to minimize the loss on the training set, 
+$$
+\hat{f} = \arg\min_{f \in H} \frac{1}{m}\sum_{i=1}^m J(f(x^{(i)}, y^{(i)})
+$$
+
 > [!note]
 > We can use any function, simple or complex, to fit the data. However, the [[🥪 No Free Lunch Theorem]] states that there's no single algorithm that performs best on all data. All models require built-in biases, and it's our job to choose a class $H$ that works for our data.
 
-Moreover, we want the model to generalize well. Mathematically, our goal is to minimize risk $$R(\hat{h}) = \mathbb{E}_{(x, y) \sim D} [J(\hat{f}(x), y)]$$
+Moreover, we want the model to generalize well. Mathematically, our goal is to minimize risk 
+$$
+R(\hat{h}) = \mathbb{E}_{(x, y) \sim D} [J(\hat{f}(x), y)]
+$$
+
 where $D$ is the distribution of our data.
 
 # Non-Parametric Models

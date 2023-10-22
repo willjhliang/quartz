@@ -1,6 +1,18 @@
-When we need function approximation in the case of large complex state spaces, we want to find a parameterization that balances complexity and expressiveness. On the least complex end of the spectrum is linear approximation, which simply applies an inner product between the input and parameters; for a value function estimate, we have $$V^\pi_\theta (s) = \theta^\top x(s)$$ where $x(s)$ is some feature vector of state $s$ and $\theta$ is our parameters.
+When we need function approximation in the case of large complex state spaces, we want to find a parameterization that balances complexity and expressiveness. On the least complex end of the spectrum is linear approximation, which simply applies an inner product between the input and parameters; for a value function estimate, we have 
+$$
+V^\pi_\theta (s) = \theta^\top x(s)
+$$
+ where $x(s)$ is some feature vector of state $s$ and $\theta$ is our parameters.
 
-While this is often impractical in practice, this method does offer some properties for theoretical analysis. The gradient of our function is $$\nabla_\theta V^\pi_\theta(s) = x(s),$$ so our gradient update is $$\theta' \leftarrow \theta + \alpha[U - V_\theta^\pi(s)]x(s)$$ where $U$ is some estimate of the true value $V^\pi(s)$. In this setting, there is only one optimum, so methods that guarantee convergence will always arrive at the optimal function approximation.
+While this is often impractical in practice, this method does offer some properties for theoretical analysis. The gradient of our function is 
+$$
+\nabla_\theta V^\pi_\theta(s) = x(s),
+$$
+ so our gradient update is 
+$$
+\theta' \leftarrow \theta + \alpha[U - V_\theta^\pi(s)]x(s)
+$$
+ where $U$ is some estimate of the true value $V^\pi(s)$. In this setting, there is only one optimum, so methods that guarantee convergence will always arrive at the optimal function approximation.
 
 # Feature Construction
 Since linear function approximation only uses the inner product, the expressiveness of our state feature vector is crucial to generalization.

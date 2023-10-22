@@ -11,4 +11,8 @@ More formally, MCTS repeats four steps multiple steps for a single decision:
 After these steps, we select our action based on some measurement of the recorded values, for example the highest action-value or highest visit count. Once we get to the new state, we can repeat MCTS using the subtree rooted at the new states.
 
 # UCT
-There are many variants of the tree policy, but the general idea is to get a balance of exploring rarely visited nodes and to expand high-value nodes. For example, the UCT policy seeks to completely expand a state first, then recurse onto the child with the highest score; the score of $s_t$ is defined as $$\frac{Q(s_t)}{N(s_t)} + 2C \sqrt{\frac{2\ln N(s_{t-1})}{N(s_t)}}$$ where $Q(s_t)$ is the value, $N(s_t)$ is the number of visits, and $s_{t-1}$ is the parent of $s_t$.
+There are many variants of the tree policy, but the general idea is to get a balance of exploring rarely visited nodes and to expand high-value nodes. For example, the UCT policy seeks to completely expand a state first, then recurse onto the child with the highest score; the score of $s_t$ is defined as 
+$$
+\frac{Q(s_t)}{N(s_t)} + 2C \sqrt{\frac{2\ln N(s_{t-1})}{N(s_t)}}
+$$
+ where $Q(s_t)$ is the value, $N(s_t)$ is the number of visits, and $s_{t-1}$ is the parent of $s_t$.

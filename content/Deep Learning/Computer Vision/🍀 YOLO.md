@@ -10,15 +10,39 @@ is the number of classes, and $B$ is the number of boxes per cell.
 
 Each cell is in charge of $C + B * 5$ values: $C$ probabilities for classes, then confidence, x, y, width, height for each of the $B$ bounding boxes.
 
-Confidence depends on both the probability of there being an object as well as the predicted IoU of the bounding box with the object's actual bounding box. $$\text{Conf} = \text{Pr} * \text{IoU}$$
+Confidence depends on both the probability of there being an object as well as the predicted IoU of the bounding box with the object's actual bounding box. 
+$$
+\text{Conf} = \text{Pr} * \text{IoU}
+$$
+
 
 # Losses
 We train YOLO with gradient descent on a loss function that assigns bounding boxes to grid cells.
-1. For each actual object, calculate the squared error of the center coordinate, $$\lambda_{coord} \sum_{i = 0}^{S^2} \sum_{j = 0}^B \mathbb{1}_{ij}^{obj} [(x_i - \hat{x_i})^2 + (y_i - \hat{y_i})^2].$$
-2. For each actual object, calculate the squared error of roots of the dimensions, "$$\lambda_{coord} \sum_{i = 0}^{S^2} \sum_{j = 0}^B \mathbb{1}_{ij}^{obj} [(\sqrt{w_i} - \sqrt{\hat{w_i}})^2 + (\sqrt{h_i} - \sqrt{\hat{h_i}})^2].$$ Rooting the values makes the loss penalize small variations in small boxes more than small variations in big boxes.
-3. For each actual object, calculate the error between the actual IoU of the bounding box and the predicted IoU; in other words, penalize mis-predicted confidences, $$\sum_{i = 0}^{S^2} \sum_{j = 0}^B \mathbb{1}_{ij}^{obj} (C_i - \hat{C_i})^2.$$ Note that this error is a moving target since we want the network to predict the IoU of the predicted bounding box.
-4. Do the same as above if the cell isn't responsible for a bounding box but multiply this error with $\lambda_{noobj}$ to decrease its importance relative to confidences for cells with objects, $$\lambda_{noobj} \sum_{i = 0}^{S^2} \sum_{j = 0}^B \mathbb{1}_{ij}^{noobj}(C_i - \hat{C_i})^2.$$
-5. For each actual object, calculate the squared error between the probabilities of each class, $$\sum_{i = 0}^{S^2} \mathbb{1}_i^{obj} \sum_{c \in classes} (p_i(c) - \hat{p_i(c)})^2.$$
+1. For each actual object, calculate the squared error of the center coordinate, 
+$$
+\lambda_{coord} \sum_{i = 0}^{S^2} \sum_{j = 0}^B \mathbb{1}_{ij}^{obj} [(x_i - \hat{x_i})^2 + (y_i - \hat{y_i})^2].
+$$
+
+2. For each actual object, calculate the squared error of roots of the dimensions, "
+$$
+\lambda_{coord} \sum_{i = 0}^{S^2} \sum_{j = 0}^B \mathbb{1}_{ij}^{obj} [(\sqrt{w_i} - \sqrt{\hat{w_i}})^2 + (\sqrt{h_i} - \sqrt{\hat{h_i}})^2].
+$$
+ Rooting the values makes the loss penalize small variations in small boxes more than small variations in big boxes.
+3. For each actual object, calculate the error between the actual IoU of the bounding box and the predicted IoU; in other words, penalize mis-predicted confidences, 
+$$
+\sum_{i = 0}^{S^2} \sum_{j = 0}^B \mathbb{1}_{ij}^{obj} (C_i - \hat{C_i})^2.
+$$
+ Note that this error is a moving target since we want the network to predict the IoU of the predicted bounding box.
+4. Do the same as above if the cell isn't responsible for a bounding box but multiply this error with $\lambda_{noobj}$ to decrease its importance relative to confidences for cells with objects, 
+$$
+\lambda_{noobj} \sum_{i = 0}^{S^2} \sum_{j = 0}^B \mathbb{1}_{ij}^{noobj}(C_i - \hat{C_i})^2.
+$$
+
+5. For each actual object, calculate the squared error between the probabilities of each class, 
+$$
+\sum_{i = 0}^{S^2} \mathbb{1}_i^{obj} \sum_{c \in classes} (p_i(c) - \hat{p_i(c)})^2.
+$$
+
 
 # Prediction
 During prediction, we first run the CNN on the input image. Since some objects near the edge of a cell may cause multiple bounding boxes to be predicted, we then run [[🎁 Non-Max Suppression]] to remove redundant predictions.

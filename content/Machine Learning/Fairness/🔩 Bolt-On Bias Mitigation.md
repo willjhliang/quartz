@@ -1,6 +1,10 @@
 The bolt-on fairness method converts a standard machine learning classifier $h$ into an adjusted classifier $\tilde{h}$ that we can control to satisfy fairness guarantees.
 
-Specifically, for subgroups $A$ and $B$, $\tilde{h}$ is defined by four parameters: $$\begin{align*} p = \Pr[\tilde{h}(x) = 1 \vert h(x) = 1, x \in A] \\ q = \Pr[\tilde{h}(x) = 1 \vert h(x) = 1, x \in B] \\ r = \Pr[\tilde{h}(x) = 1 \vert h(x) = 0, x \in A] \\ s = \Pr[\tilde{h}(x) = 1 \vert h(x) = 0, x \in B] \end{align*}$$
+Specifically, for subgroups $A$ and $B$, $\tilde{h}$ is defined by four parameters: 
+$$
+\begin{align*} p = \Pr[\tilde{h}(x) = 1 \vert h(x) = 1, x \in A] \\ q = \Pr[\tilde{h}(x) = 1 \vert h(x) = 1, x \in B] \\ r = \Pr[\tilde{h}(x) = 1 \vert h(x) = 0, x \in A] \\ s = \Pr[\tilde{h}(x) = 1 \vert h(x) = 0, x \in B] \end{align*}
+$$
+
 
 In other words, these parameters define the probability of outputting a positive prediction for each of the four groups defined by $A, B$ and the prediction from $h(x)$. For $h(x) = \tilde{h}(x)$, we would set $p = q = 1$ and $r = s = 0$. For random decisions (perfect fairness), we have $p = q = r = s = 1/2$.
 

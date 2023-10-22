@@ -17,9 +17,21 @@ Anchor boxes are boxes of varying scales and aspect ratios that allow the RPN to
 ## Training
 Specifically, we assign an anchor to have an object (positive) if it has the highest IoU with a ground truth box or an IoU $\geq 0.7$; otherwise, we set it to be negative if it has IoU $< 0.3$, and we ignore it otherwise.
 
-To train the RPN, we optimize objectness loss and coordinate loss, $$L(\{p_i\}, \{t_i\}) = \frac{1}{N_{cls}} \sum_i L_{cls}(p_i, p_i^*) + \lambda \frac{1}{N_{reg}} \sum_i p_i^* L_{reg}(t_i, t_i*)$$ where $p_i^* = 1$ if the anchor is positive and $p_i^* = 0$ if the anchor is negative. $t_i$ is a vector containing the regressed coordinates of the predicted bounding box, $$\begin{pmatrix}t_x \\ t_y \\ t_w \\ t_h\end{pmatrix} = \begin{pmatrix} (x-x_a)/w_a \\ (y-y_a)/h_a \\ \log(w/w_a) \\ \log(h/h_a) \end{pmatrix}$$ where $x_a, y_a, w_a, h_a$ are the parameters of the anchor box and $x, y, w, h$ are the predicted parameters. $t_i^*$ is defined similarly except we replace $x, y, w, h$ with $x^*, y^*, w^*, h^*$ denoting the ground truth box coordinates.
+To train the RPN, we optimize objectness loss and coordinate loss, 
+$$
+L(\{p_i\}, \{t_i\}) = \frac{1}{N_{cls}} \sum_i L_{cls}(p_i, p_i^*) + \lambda \frac{1}{N_{reg}} \sum_i p_i^* L_{reg}(t_i, t_i*)
+$$
+ where $p_i^* = 1$ if the anchor is positive and $p_i^* = 0$ if the anchor is negative. $t_i$ is a vector containing the regressed coordinates of the predicted bounding box, 
+$$
+\begin{pmatrix}t_x \\ t_y \\ t_w \\ t_h\end{pmatrix} = \begin{pmatrix} (x-x_a)/w_a \\ (y-y_a)/h_a \\ \log(w/w_a) \\ \log(h/h_a) \end{pmatrix}
+$$
+ where $x_a, y_a, w_a, h_a$ are the parameters of the anchor box and $x, y, w, h$ are the predicted parameters. $t_i^*$ is defined similarly except we replace $x, y, w, h$ with $x^*, y^*, w^*, h^*$ denoting the ground truth box coordinates.
 
-$L_{cls}$ is the log loss, and $L_{reg}$ uses the smooth $L_1$ loss $$L_1(x) = \begin{cases} 0.5x^2 & \text{if $\vert x \vert < 1$} \\ \vert x \vert - 0.5  & \text{otherwise} \end{cases}$$ where in our case $x = t_i - t_i^*$.
+$L_{cls}$ is the log loss, and $L_{reg}$ uses the smooth $L_1$ loss 
+$$
+L_1(x) = \begin{cases} 0.5x^2 & \text{if $\vert x \vert < 1$} \\ \vert x \vert - 0.5  & \text{otherwise} \end{cases}
+$$
+ where in our case $x = t_i - t_i^*$.
 
 # Detection Network (Fast R-CNN)
 The detection network classifies proposed RoIs using Fast R-CNN. We take in the first feature map and RoIs and for each RoI projection on the feature map, we apply RoI pooling to create another fixed-size feature map; RoI pooling essentially performs max pooling but with a fixed output resolution. That is, given a feature projection of size $h \times w$, to create the fixed-size $H \times W$, we divide the input into sub-windows of size $h / H \times w / W$ and get the max value in each sub-window.
@@ -28,4 +40,8 @@ This second feature map goes through some fully-connected layers and gives us th
 
 ![[20230317150818.png#invert|400]]
 
-Our loss consists of classification and regression terms, $$L(p, u, t, v) = L_{cls}(p, u) + \lambda L_{loc}(t, v)$$ where $p$ is our predicted probabilities, $u$ is the true class, $t$ is our predicted regressors, and $v$ is the true regressors. Note that we only penalize regressors (the second term) that are assigned to a ground truth object. Like above, our two components are specifically the log loss and smooth $L_1$ loss respectively.
+Our loss consists of classification and regression terms, 
+$$
+L(p, u, t, v) = L_{cls}(p, u) + \lambda L_{loc}(t, v)
+$$
+ where $p$ is our predicted probabilities, $u$ is the true class, $t$ is our predicted regressors, and $v$ is the true regressors. Note that we only penalize regressors (the second term) that are assigned to a ground truth object. Like above, our two components are specifically the log loss and smooth $L_1$ loss respectively.

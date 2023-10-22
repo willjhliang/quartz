@@ -12,7 +12,11 @@ PCR contains the PCA parameters, scores $Z$ and loadings $V$, and linear regress
 Given training data $D$, train a PCA on the inputs $x$ in $D$; apply $V$ to get the scores $Z$.
 
 We’ll train a regression model with $Z$ in place of $x$, using labels $y$ as normal
-$$ \theta = (Z^\top Z)^{-1}Z^\top Y $$
+
+$$
+ \theta = (Z^\top Z)^{-1}Z^\top Y 
+$$
+
 
 # Prediction
 Given input $x$, compute scores $z = V^\top x$, then apply our weights to predict $\hat{y} = \theta^\top z$.

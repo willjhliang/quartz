@@ -1,4 +1,8 @@
-The angle $\omega$ between vectors $x$ and $y$ can be calculated by $$\cos \omega = \frac{\langle x, y \rangle}{\Vert x \Vert \Vert y \Vert}.$$ Intuitively, the smaller the angle, the more similar $x$ and $y$ are.
+The angle $\omega$ between vectors $x$ and $y$ can be calculated by 
+$$
+\cos \omega = \frac{\langle x, y \rangle}{\Vert x \Vert \Vert y \Vert}.
+$$
+ Intuitively, the smaller the angle, the more similar $x$ and $y$ are.
 
 # Orthogonality
 Then, since orthogonal vectors have $\cos \omega = 0$, two vectors are orthogonal if and only if $\langle x, y \rangle = 0$. If $x$ and $y$ are unit, they're orthonormal.

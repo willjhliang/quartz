@@ -13,7 +13,15 @@ Note that a MRF may already satisfy these properties; specifically, a tree MRF i
 Alternatively, for other more complicated probabilistic graphs, a simple cluster graph called the Bethe cluster graph is commonly used. There are two types of clusters: for each $\phi_k$, we create factor cluster $c_k = \text{scope}(\phi_k)$ and for each $x_i$, we create singleton cluster $\{ x_i \}$. To connect them, we add edge $(c_k, \{ x_ i \})$ if $x_i \in c_k$ for all $x_i$ and $c_k$.
 
 ## Assigning Factors
-After constructing the cluster graph, we assign each $\phi_k$ to a cluster $c_{\alpha(k)}$ that contains the factor's scope, $$\text{scope}(\phi_k) \subseteq c_{\alpha(k)},$$ and define the initial potentials of a cluster $c_i$ as the product of its assigned factors, $$\psi_i(c_i) = \prod_{k \vert \alpha(k) = i} \phi_k$$
+After constructing the cluster graph, we assign each $\phi_k$ to a cluster $c_{\alpha(k)}$ that contains the factor's scope, 
+$$
+\text{scope}(\phi_k) \subseteq c_{\alpha(k)},
+$$
+ and define the initial potentials of a cluster $c_i$ as the product of its assigned factors, 
+$$
+\psi_i(c_i) = \prod_{k \vert \alpha(k) = i} \phi_k
+$$
+
 
 This completes the initialization part of the algorithm, and we now "mix" these potentials together via message passing.
 
@@ -27,17 +35,45 @@ To find marginal probabilities, we use sum-product message passing. For MAP infe
 ## Sum-Product
 In sum-product, we marginalize over the product of our desired quantities. This is somewhat analogous to [[🔫 Variable Elimination]] where we combined factors via multiplication and then marginalized over a random variable.
 
-Formally, a message from cluster $i$ to cluster $j$ is defined as $$\delta_{i \rightarrow j} (s_{ij}) = \sum_{c_i \setminus s_{ij}} \psi_i \times \prod_{k \in (N(i) \setminus \{ j \})} \delta_{k \rightarrow i}(s_{ki}).$$
+Formally, a message from cluster $i$ to cluster $j$ is defined as 
+$$
+\delta_{i \rightarrow j} (s_{ij}) = \sum_{c_i \setminus s_{ij}} \psi_i \times \prod_{k \in (N(i) \setminus \{ j \})} \delta_{k \rightarrow i}(s_{ki}).
+$$
+
 
 ## Max-Sum
-Observe that to find the max, we can simply replace the summation with maximization. However, this introduces numerical instability, so we can maximize the log instead, giving us the max-sum $$\delta_{i \rightarrow j}(s_{ij}) = \max_{c_i \setminus s_{ij}} \left\{ \log \psi_i + \sum_{k \in (N(i) \setminus \{ j \})} \delta_{k \rightarrow i}(s_{ki}) \right\}.$$
+Observe that to find the max, we can simply replace the summation with maximization. However, this introduces numerical instability, so we can maximize the log instead, giving us the max-sum 
+$$
+\delta_{i \rightarrow j}(s_{ij}) = \max_{c_i \setminus s_{ij}} \left\{ \log \psi_i + \sum_{k \in (N(i) \setminus \{ j \})} \delta_{k \rightarrow i}(s_{ki}) \right\}.
+$$
+
 
 # Algorithm
-The belief propagation algorithm initializes all messages to $1$ and repeats the message passing operation again and again on all edges. Upon convergence, for each cluster $c_i$, we have the belief $$\beta_i(c_i) = \psi_i \times \prod_{k \in N(i)} \delta_{k \rightarrow i}(s_{ki}).$$
+The belief propagation algorithm initializes all messages to $1$ and repeats the message passing operation again and again on all edges. Upon convergence, for each cluster $c_i$, we have the belief 
+$$
+\beta_i(c_i) = \psi_i \times \prod_{k \in N(i)} \delta_{k \rightarrow i}(s_{ki}).
+$$
 
-With sum-product, our beliefs are proportional to the marginal probabilities over their scopes, $$\beta_i (c_i) \propto  p(c_i),$$ so to answer a query for $p(x)$, we find a cluster $c_i$ for which $x \in c_i$ and get $$\tilde{p}(x) = \sum_{c_i \setminus \{ x \}} \beta_i (c_i),$$ which we need to normalize by dividing by partition $$Z = \sum_{c_i}\beta_i(c_i).$$
 
-With max-sum, our beliefs are the max-marginals $$\beta_i(c_i) = \max_{\{ x_1, \ldots, x_n \} \setminus c_i} \log p(x).$$
+With sum-product, our beliefs are proportional to the marginal probabilities over their scopes, 
+$$
+\beta_i (c_i) \propto  p(c_i),
+$$
+ so to answer a query for $p(x)$, we find a cluster $c_i$ for which $x \in c_i$ and get 
+$$
+\tilde{p}(x) = \sum_{c_i \setminus \{ x \}} \beta_i (c_i),
+$$
+ which we need to normalize by dividing by partition 
+$$
+Z = \sum_{c_i}\beta_i(c_i).
+$$
+
+
+With max-sum, our beliefs are the max-marginals 
+$$
+\beta_i(c_i) = \max_{\{ x_1, \ldots, x_n \} \setminus c_i} \log p(x).
+$$
+
 
 Note that we can answer any query by caching the results of our messages to avoid computing everything for each query.
 

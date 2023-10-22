@@ -26,6 +26,10 @@ def dfs_visit(s, adj, vis, ret):
 ```
 
 # Runtime
-$$ O(V+E) $$
+
+$$
+ O(V+E) 
+$$
+
 
 This is just a modified DFS, so it also takes $O(V+E)$.

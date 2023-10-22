@@ -1,12 +1,24 @@
 Reinforcement learning deals with general learning problems in which an [[🧸 Agent]] seeks to achieve some goal in an environment formalized as a [[🌎 Markov Decision Process]] (and in rare cases a [[🎰 Multi-Armed Bandit]] or [[📖 Contextual Bandit]]). This system can be broken down into four key components:
 1. A policy $\pi$ defines how the agent behaves by defining what the agent should do in response to an observation from the environment.
-2. A reward signal defines our goal for the agent by designating what states or actions are desirable. Our agent aims to maximize its expected total reward; that is, for some parameters $\theta$ that define our policy $\pi$, our objective is to maximize $$J(\theta) = \mathbb{E}_{\tau \sim p_\theta(\tau)}\left[ \sum_{t=1}^T r(s_t, a_t) \right] = \mathbb{E}_{\rho(s)}[V^\pi(s)] = \mathbb{E}_{\rho(s, a)}[Q^\pi(s, a)].$$
+2. A reward signal defines our goal for the agent by designating what states or actions are desirable. Our agent aims to maximize its expected total reward; that is, for some parameters $\theta$ that define our policy $\pi$, our objective is to maximize 
+$$
+J(\theta) = \mathbb{E}_{\tau \sim p_\theta(\tau)}\left[ \sum_{t=1}^T r(s_t, a_t) \right] = \mathbb{E}_{\rho(s)}[V^\pi(s)] = \mathbb{E}_{\rho(s, a)}[Q^\pi(s, a)].
+$$
+
 3. Value functions define the expected total reward. Thus, these functions define the long-term value of the state or state-action pair.
 4. A model of the environment estimates how the environment behaves. This component is optional, but learning it allows our agent to perform planning.
 
 There's a huge diversity of algorithms that balance stability, efficiency, and prior assumptions. Depending on the environment, specifically the size of the state space, these methods are either tabular or function approximations; for the former, we simply maintain values for each state or state-action pair whereas in the latter, due to a combinatorially large state space, we need to generalize our findings by using a function (like [[🕸️ Multilayer Perceptron]] or [[✏️ Linear Function Approximation]]) instead.
 
-Generally, if we have a table or function $f_\theta$ with parameters $\theta$, index $x$ (like state or state-action), and target $y$, then a tabular update looks like $$f_\theta(x) \leftarrow f_\theta(x) + \alpha[y - f_\theta(x)]$$ whereas a function update uses [[⛰️ Gradient Descent]], $$\theta \leftarrow \theta + \alpha[y - f_\theta(x)]\nabla_\theta f_\theta(x).$$
+Generally, if we have a table or function $f_\theta$ with parameters $\theta$, index $x$ (like state or state-action), and target $y$, then a tabular update looks like 
+$$
+f_\theta(x) \leftarrow f_\theta(x) + \alpha[y - f_\theta(x)]
+$$
+ whereas a function update uses [[⛰️ Gradient Descent]], 
+$$
+\theta \leftarrow \theta + \alpha[y - f_\theta(x)]\nabla_\theta f_\theta(x).
+$$
+
 
 Nevertheless, whether tabular or approximate, we can generally categorize them as learning or planning—depending on whether they're model-free or model-based respectively.
 

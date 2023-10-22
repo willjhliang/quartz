@@ -48,6 +48,10 @@ def dfs2(s, adj, vis, comp):
 ```
 
 # Runtime
-$$ O(V+E) $$
+
+$$
+ O(V+E) 
+$$
+
 
 We essentially perform two runs of DFS, so our algorithm takes $O(V+E)$.

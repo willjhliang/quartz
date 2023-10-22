@@ -4,7 +4,11 @@ Generalized Linear Models generalize linear regression to non-linear data by eit
 2. With basis functions $\phi_1 \ldots \phi_d$, our prediction $\hat{y}(x) = \theta^\top z$ where $z_i = \phi_i(x)$. This usually works well with gaussian basis functions instead of polynomial functions.
 
 ## Exponential Family
-The exponential family of distributions is defined by the form $$p(y;\eta) = b(y) \exp \{ \eta T(y) - a(\eta)\}$$
+The exponential family of distributions is defined by the form 
+$$
+p(y;\eta) = b(y) \exp \{ \eta T(y) - a(\eta)\}
+$$
+
 where $\eta$ is the natural or canonical parameter, $T(y)$ is the sufficient statistic, and $a(\eta)$ is the log partition function.
 
 Distributions that fall into this family include the following.

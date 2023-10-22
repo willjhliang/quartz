@@ -19,13 +19,21 @@ Group fairness algorithms aim to reduce the differences in harm across different
 Individual fairness is a bit harder to define. We can't treat each individual as their own group since their error would be $0$ or $1$.
 
 ## Metric Fairness
-Metric fairness applies the idea that "similar individuals should get treated similarly." Specifically, it defines some distance metric $d(x_1, x_2)$ between two individuals and constraints $h(x)$ to obey $$\vert h(x_1) - h(x_2) \vert \leq \alpha d(x_1, x_2).$$
+Metric fairness applies the idea that "similar individuals should get treated similarly." Specifically, it defines some distance metric $d(x_1, x_2)$ between two individuals and constraints $h(x)$ to obey 
+$$
+\vert h(x_1) - h(x_2) \vert \leq \alpha d(x_1, x_2).
+$$
+
 
 ## Subgroup Fairness
 Subgroup fairness notes that if we achieve group fairness, subgroups defined by membership in intersecting groups ("disabled Hispanic women over age 55," for example) can still face discrimination. To solve this, we can employ a similar learner-regulator framework from the [[🔮 Oracle Fairness Approach]] to enforce violations on groups $g \in G$.
 
 ## Average Individual Fairness
-Average individual fairness considers cases where our model $h$ evaluates individuals multiple times (for example, in product recommendations). It forces the average error rates across individuals to be roughly similar, $$\epsilon(h, x_1) \approx \epsilon(h, x_2).$$
+Average individual fairness considers cases where our model $h$ evaluates individuals multiple times (for example, in product recommendations). It forces the average error rates across individuals to be roughly similar, 
+$$
+\epsilon(h, x_1) \approx \epsilon(h, x_2).
+$$
+
 
 ## Fairness Elicitation
 Fairness elicitation goes beyond simple definitions of fairness and instead elicits empirical judgements from other people. These judgement have the form "$x_1$ and $x_2$ should receive the same treatment" or "$x_1$ should be treated at least as well as $x_2$."
@@ -33,7 +41,11 @@ Fairness elicitation goes beyond simple definitions of fairness and instead elic
 If we have the outcome data $S = \{ (x, y ) \}$ and judgements $F = \{ (x_1, x_2) \}$, we can find $h \in H$ that minimizes error on $S$ subject to $F$. This provides another game theory problem formulation.
 
 ## Minimax Group Fairness
-Minimax group fairness notes that for some methods that aim to equalize harm, we may be needlessly inflating harm for the advantaged subgroups to ensure equality. An alternative guarantee is to promise that the error on each group is beneath a threshold—but no promise that errors are equal across groups. This gives us the minimax problem $$\min_h \max_g \{ \epsilon(h, g) \}.$$
+Minimax group fairness notes that for some methods that aim to equalize harm, we may be needlessly inflating harm for the advantaged subgroups to ensure equality. An alternative guarantee is to promise that the error on each group is beneath a threshold—but no promise that errors are equal across groups. This gives us the minimax problem 
+$$
+\min_h \max_g \{ \epsilon(h, g) \}.
+$$
+
 
 ## Bias Bounties
 [[💰 Bias Bounties]] is an approach that invites the public to help improve the model. Similar to bug bounties, we reward people for finding biases and fixing them.

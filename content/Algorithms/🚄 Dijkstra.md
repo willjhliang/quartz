@@ -22,6 +22,10 @@ def dijkstra(s, adj):
 ```
 
 # Runtime
-$$ O((V+E)\lg V) $$
+
+$$
+ O((V+E)\lg V) 
+$$
+
 
 Priority queue takes $O(\lg V)$ for both push and pop. We pop each vertex once, taking $O(V\lg V)$ total, and use each edge once to add a neighbor to the priority queue, taking $O(E \lg V)$ total; therefore, our total runtime is $O((V+E)\lg V)$.

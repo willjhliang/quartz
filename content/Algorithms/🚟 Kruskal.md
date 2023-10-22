@@ -22,7 +22,11 @@ def kruskal(adj):
 ```
 
 # Runtime
-$$ O(E\lg V) $$
+
+$$
+ O(E\lg V) 
+$$
+
 
 Sorting the edges takes $O(E \lg E)$, but since $E \leq V^2$, this is equivalent to $O(E \lg V)$. Each [[🗼 Union-Find]] operation takes asymptotic $O(1)$, so iterating over edges takes $O(E)$.
 

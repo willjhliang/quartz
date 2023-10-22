@@ -8,4 +8,12 @@ Then, we connect one end of the lines together $MS$ and find their intersection 
 
 Connecting $A$ with the top of the known line $T$ and shooting it to the unknown line, we intersect at $B$. Note that $SA$ and $TA$ are parallel in the world. Thus, $MB$ is the same length as $ST$ in the world.
 
-Then, let $V$ be the vertical vanishing point. We can now apply cross ratios, $$\lambda = CR(M, B, H, V).$$ In the world, with $V$ at infinity, we have $$\lambda = \frac{M_w H_w}{B_w H_w} = \frac{M_w H_w}{M_w H_w - T_wS_w}.$$ We can measure $\lambda$ with the image, and we're given $T_wS_w$. Thus, we can solve for $M_wH_w$ to get the length of the unknown line in the world.
+Then, let $V$ be the vertical vanishing point. We can now apply cross ratios, 
+$$
+\lambda = CR(M, B, H, V).
+$$
+ In the world, with $V$ at infinity, we have 
+$$
+\lambda = \frac{M_w H_w}{B_w H_w} = \frac{M_w H_w}{M_w H_w - T_wS_w}.
+$$
+ We can measure $\lambda$ with the image, and we're given $T_wS_w$. Thus, we can solve for $M_wH_w$ to get the length of the unknown line in the world.

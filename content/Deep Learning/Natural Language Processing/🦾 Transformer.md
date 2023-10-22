@@ -3,7 +3,11 @@
 
 Transformers are encoder-decoder models for sequence processing that only use the [[🚨 Attention]], leaving out the recurrence connections found in [[💬 Recurrent Neural Network]]s. In other words, while RNNs process sequences word by word, transformers look at them in parallel.
 
-We use the scaled dot-product attention, a slightly modified version of the general attention mechanism, which is calculated as $$\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$
+We use the scaled dot-product attention, a slightly modified version of the general attention mechanism, which is calculated as 
+$$
+\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+$$
+
 where $d_k$ is the dimension of the key space.
 
 > [!info]
@@ -28,7 +32,11 @@ Each encoder unit uses a single self-attention mechanism, which uses the embeddi
 
 Each decoder unit uses a masked self-attention mechanism (bottom) and a standard attention mechanism (top) that uses queries from the previous decoder output and keys and values from the encoder. We mask all rightward information in the former since the decoder should only use its previous output.
 
-The feed-forward blocks are simple neural networks that calculate $$\text{ReLU}(xW_1 + b_1)W_2 + b_2$$
+The feed-forward blocks are simple neural networks that calculate 
+$$
+\text{ReLU}(xW_1 + b_1)W_2 + b_2
+$$
+
 
 Lastly, since we convert the each input token into an embedding, we maintain positional information for each token by adding a positional encoding, calculated with sines and cosines, that determine the distances between words.
 

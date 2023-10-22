@@ -4,7 +4,11 @@ To create this intermediate space, we use two models (trained end-to-end): the m
 
 ![[20230315205323.png#invert|300]]
 
-Notably the synthesis network doesn't take $w$ as input. Rather, it starts from random input and injects $w$ in four stages via adaptive [[✂️ Normalization#Instance Normalization]] (AdaIN). AdaIN first normalizes its input, then manipulates it by a scaling factor $y_{si}$ and bias factor $y_{bi}$ that we derive from a learned affine transformation $A$ of our style code $w$. Formally, for a feature-map $i$, $$\text{AdaIN}(x_i, y) = y_{si} \frac{x_i - \mu(x_i)}{\sigma(x_i)} + y_{bi}.$$
+Notably the synthesis network doesn't take $w$ as input. Rather, it starts from random input and injects $w$ in four stages via adaptive [[✂️ Normalization#Instance Normalization]] (AdaIN). AdaIN first normalizes its input, then manipulates it by a scaling factor $y_{si}$ and bias factor $y_{bi}$ that we derive from a learned affine transformation $A$ of our style code $w$. Formally, for a feature-map $i$, 
+$$
+\text{AdaIN}(x_i, y) = y_{si} \frac{x_i - \mu(x_i)}{\sigma(x_i)} + y_{bi}.
+$$
+
 
 We also inject noise into the synthesis, each scaled by a learned factor $B$, that controls stochastic image details like the curls in hair.
 

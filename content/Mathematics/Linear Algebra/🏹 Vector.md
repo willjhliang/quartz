@@ -11,7 +11,11 @@ Vector space $\mathcal{V}$ is a set that's closed under addition and scalar mult
 Vector subspaces are sets $\mathcal{U} \subseteq \mathcal{V}$ that are closed under addition and scalar multiplication.
 
 # Linear Independence
-A linear combination $v$ of vectors $x_1, \ldots, x_k$ is defined as $$v = \lambda_1x_1 + \ldots + \lambda_kx_k.$$ 
+A linear combination $v$ of vectors $x_1, \ldots, x_k$ is defined as 
+$$
+v = \lambda_1x_1 + \ldots + \lambda_kx_k.
+$$
+ 
 Vectors $x_1, \ldots, x_k$ are linearly independent if there are no non-trivial ($\lambda_1 = \ldots = \lambda_k = 0$) solutions to $\sum_{i=1}^k \lambda_ix_i = 0$. If there is such a solution, then the vectors are linearly dependent.
 
 # Bases

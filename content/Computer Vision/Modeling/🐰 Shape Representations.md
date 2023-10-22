@@ -15,11 +15,19 @@ The above methods all explicitly represent the shape; that is, we can directly g
 A more appealing alternative are implicit fields, which implicitly model the shape by parameterizing some other value. The shape can then be "extracted" from the field via [[🧊 Marching Cubes]], but in the implicit form, we can achieve a continuous (and thus infinite) resolution.
 
 ## Occupancy Field
-The occupancy field is a function that maps a 3D point to its occupancy—whether the point is in the object, $0$ or $1$ for "in object" or "free space" respectively. That is, the occupancy field is defined as $$o: \mathbb{R}^3 \rightarrow \{ 0, 1 \}.$$
+The occupancy field is a function that maps a 3D point to its occupancy—whether the point is in the object, $0$ or $1$ for "in object" or "free space" respectively. That is, the occupancy field is defined as 
+$$
+o: \mathbb{R}^3 \rightarrow \{ 0, 1 \}.
+$$
+
 
 ![[20230424110137.png#invert|100]]
 
 ## Signed Distance Field (SDF)
-The signed distance field (SDF) encodes a bit more information than the occupancy field; rather than just $0$ or $1$, the SDF is a function mapping the point to the distance from the point to the object's surface (with positive being outside and negative being inside the object). That is, our function is $$d: \mathbb{R}^3 \rightarrow \mathbb{R}.$$
+The signed distance field (SDF) encodes a bit more information than the occupancy field; rather than just $0$ or $1$, the SDF is a function mapping the point to the distance from the point to the object's surface (with positive being outside and negative being inside the object). That is, our function is 
+$$
+d: \mathbb{R}^3 \rightarrow \mathbb{R}.
+$$
+
 
 ![[20230424110253.png#invert|100]]

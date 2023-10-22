@@ -9,7 +9,11 @@ As before, we optimize the $L_2$ loss, but this time with stochastic [[⛰️ Gr
 ## Locally Weighted Regression
 If our data is non-linear, we can approximate a prediction by fitting a line to points that are nearby. However, this is a non-parametric method that requires fitting a new line for every prediction.
 
-Specifically, we aim to find $\theta$ that minimizes the weighted $L_2$ loss $$\sum_{i=1}^n w^{(i)} (y^{(i)} - \theta^\top x^{(i)})^2$$
+Specifically, we aim to find $\theta$ that minimizes the weighted $L_2$ loss 
+$$
+\sum_{i=1}^n w^{(i)} (y^{(i)} - \theta^\top x^{(i)})^2
+$$
+
 where $w^{(i)} = \exp\{\frac{-(x^{(i)} - x)^2}{2\tau^2}\}$, $\tau$ controlling the bandwidth of the sudo-gaussian.
 
 # Model

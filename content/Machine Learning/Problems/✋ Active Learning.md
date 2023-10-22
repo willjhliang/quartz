@@ -12,7 +12,11 @@ There are three main methods for selecting the next observation to label.
 3. Optimal experimental design finds a point that minimizes the variance of the weight estimates, unlike that previous methods that looked at uncertainty in $x$ or variance in $y$.
 
 ## Ordinary Least Squares
-For OLS [[🏦 Linear Regression]], $$\theta \sim \mathcal{N}(\beta, \sigma^2(X^\top X)^{-1})$$for data $y = \beta^\top x + \epsilon$, $\epsilon \sim \mathcal{N}(0, \sigma^2)$. In optimal experimental design, we pick a point whose addition to $X$ will minimize $\sigma^2 (X^\top X)^{-1}$. Note that the label of this point, $y$, doesn't actually matter.
+For OLS [[🏦 Linear Regression]], 
+$$
+\theta \sim \mathcal{N}(\beta, \sigma^2(X^\top X)^{-1})
+$$
+for data $y = \beta^\top x + \epsilon$, $\epsilon \sim \mathcal{N}(0, \sigma^2)$. In optimal experimental design, we pick a point whose addition to $X$ will minimize $\sigma^2 (X^\top X)^{-1}$. Note that the label of this point, $y$, doesn't actually matter.
 
 > [!info]
 > Since $X^\top X = \Sigma$, we're actually finding a point that maximizes the covariance. This means we want to label points in the direction of maximizes variance, or in the direction of the first principal component of PCA.

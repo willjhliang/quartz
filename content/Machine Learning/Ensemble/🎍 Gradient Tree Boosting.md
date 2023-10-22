@@ -8,7 +8,11 @@ The general idea is very similar to a [[🌲 Random Forest]], but boosting intro
 We can train the algorithm on any loss function; the residual we fit on is the gradient of this loss. For simplicity, we'll use $L_2$ regression loss, and we move down the gradient every time we add a tree, thereby decreasing loss with each new addition to the model.
 
 # Model
-Our model consists of trees $h_t(x)$ with scaling coefficient $\alpha_t$. In other words, our model is $$h(x) = \sum_{t=1}^\top \alpha_th_t(x) + C$$where $C$ a constant term (generally used for regression) that's equivalent to $h_0(x) = C$.
+Our model consists of trees $h_t(x)$ with scaling coefficient $\alpha_t$. In other words, our model is 
+$$
+h(x) = \sum_{t=1}^\top \alpha_th_t(x) + C
+$$
+where $C$ a constant term (generally used for regression) that's equivalent to $h_0(x) = C$.
 
 The $T$ trees are limited to depth $d$, and each are trained on fraction $f$ of the data. $\eta$ is also used as a learning rate when we add new trees.
 
@@ -23,4 +27,7 @@ Then, for $T$ iterations,
 5. Update our model $h(x) = h(x) + \eta \alpha_t h_t(x)$ using the learning rate.
 
 # Prediction
-Similar to Adaboost, given input $x$, calculate $h_t(x)$ for all $t = 1\ldots T$ and return $$\sum_{t=1}^\top \alpha_th_t(x) + C$$
+Similar to Adaboost, given input $x$, calculate $h_t(x)$ for all $t = 1\ldots T$ and return 
+$$
+\sum_{t=1}^\top \alpha_th_t(x) + C
+$$

@@ -14,4 +14,7 @@ This technique first finds the cdf of $Y$, then differentiates it to get the pdf
 2. Differentiate $f(y) = \frac{d}{dy}F_Y(y)$ to get the pdf.
 
 ## Change of Variables
-The change of variables technique uses similar steps from the distribution function to generalize one final formula, $$f(y) = f_x(U^{-1}(y)) \cdot \left\vert \frac{d}{dy} U^{-1}(y)\right\vert.$$
+The change of variables technique uses similar steps from the distribution function to generalize one final formula, 
+$$
+f(y) = f_x(U^{-1}(y)) \cdot \left\vert \frac{d}{dy} U^{-1}(y)\right\vert.
+$$

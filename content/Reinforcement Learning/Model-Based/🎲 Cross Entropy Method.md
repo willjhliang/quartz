@@ -1,4 +1,12 @@
-The cross entropy method (CEM) is a stochastic optimization algorithm that addresses the general optimization problem $$A = \arg\max_A J(A)$$ via random selection. $J(A)$ can be any objective, but in the reinforcement learning setting, we commonly have $$J(A) = \sum_{t=1}^T r(s_t, a_t) \text{ where } s_{t+1} = f(s_t, a_t)$$ for some world model $f$.
+The cross entropy method (CEM) is a stochastic optimization algorithm that addresses the general optimization problem 
+$$
+A = \arg\max_A J(A)
+$$
+ via random selection. $J(A)$ can be any objective, but in the reinforcement learning setting, we commonly have 
+$$
+J(A) = \sum_{t=1}^T r(s_t, a_t) \text{ where } s_{t+1} = f(s_t, a_t)
+$$
+ for some world model $f$.
 
 First, we're motivated by the naive, completely stochastic approximation algorithm (sometimes called "random shooting"):
 1. Pick $A_1, \ldots, A_N$ from some distribution.

@@ -14,6 +14,14 @@ The lines $l$ and $l'$ are the projection of $L$ onto the image planes. If we im
 
 We can compute all this on a single image plane; let's choose the one on the right. We know that the shadow $L_s'$ is projected onto $l'$, and we want to find the projection of $L_s$, which we'll call $l_s$, onto the right image plane.
 
-However, we also have the homography $H$, and we know $L_s$ is projected onto $l$ in the left image plane. Thus, to project $l$ onto the right image plane, we have $$l_s \sim H^{-\top}l.$$ Then, the projection of $p$ onto the right image plane is the intersection of the projection of the two shadows, $$p \sim H^{-\top}l \times l'$$
+However, we also have the homography $H$, and we know $L_s$ is projected onto $l$ in the left image plane. Thus, to project $l$ onto the right image plane, we have 
+$$
+l_s \sim H^{-\top}l.
+$$
+ Then, the projection of $p$ onto the right image plane is the intersection of the projection of the two shadows, 
+$$
+p \sim H^{-\top}l \times l'
+$$
+
 
 With $p$, we can compare it with the goal line in the right image plane to check which side the ball is on.

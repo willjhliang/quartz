@@ -1,6 +1,14 @@
 Feature-wise linear modulation (FiLM) is a general technique for influencing a neural network's output via some external conditioning input. A FiLM layer allows us to inject conditioning into the intermediate activations by using conditioning to perform an affine transformation on the features.
 
-Formally, FiLM learns a "generator" consisting of two functions $f$ and $h$ that output $$\gamma = f(x),\ \beta = h(x).$$ Then, for a network's activations $F$, the film layer performs $$\text{FiLM}(F \vert \gamma, \beta) = \gamma F + \beta.$$ $f$ and $h$ are generally unique to each feature map (in the case of CNNs) or feature, so this allows extreme flexibility in influencing the activations.
+Formally, FiLM learns a "generator" consisting of two functions $f$ and $h$ that output 
+$$
+\gamma = f(x),\ \beta = h(x).
+$$
+ Then, for a network's activations $F$, the film layer performs 
+$$
+\text{FiLM}(F \vert \gamma, \beta) = \gamma F + \beta.
+$$
+ $f$ and $h$ are generally unique to each feature map (in the case of CNNs) or feature, so this allows extreme flexibility in influencing the activations.
 
 ![[20230402105900.png#invert|200]]
 

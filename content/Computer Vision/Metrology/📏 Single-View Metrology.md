@@ -5,11 +5,23 @@ Note that ratios aren't preserved by projections, as demonstrated in the figure 
 
 ![[20230220101455.png#invert|300]]
 
-However, cross ratios, defined as $$CR(A, B, C, D) = \frac{AC}{AD} : \frac{BC}{BD},$$ are preserved. Thus, in the diagram below, $$CR(A, B, C, D) = CR(A', B', C', D').$$
+However, cross ratios, defined as 
+$$
+CR(A, B, C, D) = \frac{AC}{AD} : \frac{BC}{BD},
+$$
+ are preserved. Thus, in the diagram below, 
+$$
+CR(A, B, C, D) = CR(A', B', C', D').
+$$
+
 
 ![[20230220101536.png#invert|300]]
 
-Furthermore, if a point $D$ is at infinity, we have $$CR(A, B, C, D) = \frac{AC}{BC}.$$
+Furthermore, if a point $D$ is at infinity, we have 
+$$
+CR(A, B, C, D) = \frac{AC}{BC}.
+$$
+
 
 # Transferring Measurements
 In an image, we can compute all lengths between points. If we're given some measurements in the world, we can solve the cross ratios equality above for a single variable to compute all measurements in the world.

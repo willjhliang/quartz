@@ -25,9 +25,21 @@ To build an uncertainty-aware model, first note that the output entropy for the 
 
 A model's output entropy measures the first type of uncertainty whereas we want to find the second. That is, the model may be overconfident with out-of-distribution predictions if there's little statistical uncertainty in the data.
 
-To find model uncertainty, we estimate $p(\theta \vert D)$; the entropy of this distribution is the second kind of uncertainty. To do so, we can train an ensemble of neural networks using bootstrapping, each with its own weights. Then, our weight distribution is a mixture of Dirac deltas, $$p(\theta \vert D) \approx \frac{1}{N}\sum_{i=1}^N \delta(\theta_i),$$ and we can predict the next state using $$\int_\theta p(s_{t+1} \vert s_t, a_t, \theta) p(\theta \vert D) d\theta \approx \frac{1}{N}\sum_{i=1}^N p(s_{t+1} \vert s_t, a_t, \theta_i).$$
+To find model uncertainty, we estimate $p(\theta \vert D)$; the entropy of this distribution is the second kind of uncertainty. To do so, we can train an ensemble of neural networks using bootstrapping, each with its own weights. Then, our weight distribution is a mixture of Dirac deltas, 
+$$
+p(\theta \vert D) \approx \frac{1}{N}\sum_{i=1}^N \delta(\theta_i),
+$$
+ and we can predict the next state using 
+$$
+\int_\theta p(s_{t+1} \vert s_t, a_t, \theta) p(\theta \vert D) d\theta \approx \frac{1}{N}\sum_{i=1}^N p(s_{t+1} \vert s_t, a_t, \theta_i).
+$$
+
 
 ## Planning
-Given an uncertainty-aware model, our objective is the average reward $$J(a_1, \ldots, a_T) = \frac{1}{N}\sum_{i=1}^N \sum_{t=1}^T r(s_{it}, a_t) \text{ where $s_{i(t+1)} = f_i(s_{it}, a_t)$}.$$
+Given an uncertainty-aware model, our objective is the average reward 
+$$
+J(a_1, \ldots, a_T) = \frac{1}{N}\sum_{i=1}^N \sum_{t=1}^T r(s_{it}, a_t) \text{ where $s_{i(t+1)} = f_i(s_{it}, a_t)$}.
+$$
+
 
 In practice, this amounts to sampling some weights $\theta \sim p(\theta \vert D)$, calculating the objective, and repeating multiple times.

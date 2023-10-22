@@ -1,4 +1,8 @@
-An occupancy network is a 3D reconstruction technique that models the [[🐰 Shape Representations#Implicit Fields#Occupancy Field]] conditioned on a specific input object representation $x \in \mathcal{X}$ (for example, an image or point cloud) that we want to reconstruct; formally, the network is $$f_\theta: \mathbb{R}^3 \times \mathcal{X} \rightarrow [0, 1],$$ which assigns occupancy probabilities for each point.
+An occupancy network is a 3D reconstruction technique that models the [[🐰 Shape Representations#Implicit Fields#Occupancy Field]] conditioned on a specific input object representation $x \in \mathcal{X}$ (for example, an image or point cloud) that we want to reconstruct; formally, the network is 
+$$
+f_\theta: \mathbb{R}^3 \times \mathcal{X} \rightarrow [0, 1],
+$$
+ which assigns occupancy probabilities for each point.
 
 In implementation, we treat $p$, our point, as the FCN network input, and use conditional batch normalization (embedding-predicted $\beta$ and $\gamma$) to condition on an encoding of the inputted data.
 
@@ -9,7 +13,11 @@ The encoder is task specific; we use ResNet for images, [[🎾 PointNet]] for po
 ![[20230323120058.png#invert]]
 
 # Optimization
-To train our network, we randomly sample points $\{ p_1, \ldots, p_K \}$ in the 3D bounding volume of the desired object and minimize $$\sum_{i=1}^K L(f_\theta(p_i, x), o_i)$$ where $o_i = o(p_i)$ is the ground truth occupancy and $L$ is the cross-entropy loss.
+To train our network, we randomly sample points $\{ p_1, \ldots, p_K \}$ in the 3D bounding volume of the desired object and minimize 
+$$
+\sum_{i=1}^K L(f_\theta(p_i, x), o_i)
+$$
+ where $o_i = o(p_i)$ is the ground truth occupancy and $L$ is the cross-entropy loss.
 
 # Inference (MISE)
 To provide a 3D reconstruction using a trained occupancy network, we require a series of refinement steps; this algorithm is called multiresolution isosurface extraction (MISE).
@@ -18,7 +26,11 @@ To provide a 3D reconstruction using a trained occupancy network, we require a s
 3. Divide active voxels into eight subvoxels and repeat from step one until the desired resolution.
 4. Apply marching cubes to extract an isosurface.
 5. Simplify the mesh using Fast-Quadric-Mesh-Simplification.
-6. Refine the mesh using gradients from the occupancy network by minimizing $$\sum_{i=1}^K (f_\theta(p_i, x) - \tau)^2 + \lambda \left\Vert \frac{\nabla_p f_\theta(p_i, x)}{\Vert \nabla_p f_\theta(p_i, x) \Vert} - n(p_i) \right\Vert^2$$ with respect to the mesh points $p_i$. $n(p_i)$ is the normal vector of our current mesh at $p_i$, and this step essentially "smoothens" our mesh.
+6. Refine the mesh using gradients from the occupancy network by minimizing 
+$$
+\sum_{i=1}^K (f_\theta(p_i, x) - \tau)^2 + \lambda \left\Vert \frac{\nabla_p f_\theta(p_i, x)}{\Vert \nabla_p f_\theta(p_i, x) \Vert} - n(p_i) \right\Vert^2
+$$
+ with respect to the mesh points $p_i$. $n(p_i)$ is the normal vector of our current mesh at $p_i$, and this step essentially "smoothens" our mesh.
 
 # Convolutional Occupancy Network
 Convolutional occupancy networks apply local information in occupancy prediction by using a more complex procedure than a simple FCN; rather than conditional on a global encoding of the input, we localize the features that are used in the occupancy network.

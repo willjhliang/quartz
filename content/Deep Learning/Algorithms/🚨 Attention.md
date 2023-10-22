@@ -3,7 +3,11 @@ Attention mechanisms compute a weighted sum of values, paying different levels o
 2. Compute the softmax over scores to get weights $\alpha_i$.
 3. Output the weighted sum $\sum_{i=1}^n \alpha_i v_i$ of values.
 
-In the simplest case, with the score function being a dot-product, we can write the attention mechanism as $$\text{Attention}(Q, K, V) = \text{softmax}(QK^T)V.$$ However, there are many other score functions. The most common ones are below:
+In the simplest case, with the score function being a dot-product, we can write the attention mechanism as 
+$$
+\text{Attention}(Q, K, V) = \text{softmax}(QK^T)V.
+$$
+ However, there are many other score functions. The most common ones are below:
 1. Additive: $\text{score}(q, k) = v^\top \text{tanh}(W[q;k])$ where $v$ and $W$ are learned weights and $[q;k]$ is the concatenated vector of $q$ and $k$.
 2. Dot-product: $\text{score}(q, k) = q^\top k$.
 3. General: $\text{score}(q, k) = q^\top Wk$ where $W$ is learnable.

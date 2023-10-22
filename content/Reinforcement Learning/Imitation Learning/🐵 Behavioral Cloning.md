@@ -29,11 +29,27 @@ Assume our supervised learning policy $\pi^*$ has error $\epsilon$ after trainin
 
 Let $c(s, a)$ be the cost of our action. It's equal to $0$ if $a = \pi^*(s)$ and $1$ otherwise.
 
-Consider state $s_t$ after $t$ steps. If we make no mistakes, our state $s_t$ will be in the training distribution. Otherwise, it'll be in some mistake distribution. We can split our policy distribution into these two cases, $$p_\theta(s_t) = (1-\epsilon)^\top p_{train}(s_t) + [1 - (1 - \epsilon)^\top ]p_{mistake}(s_t).$$
-Now, consider the [[👟 Total Variation Distance]], the sum of absolute value differences between probabilities, between $p_\theta$ and $p_{train}$, $$\vert p_\theta(s_t) - p_{train}(s_t)\vert = [1 - (1 - \epsilon)^\top ] \vert p_{mistake}(s_t) - p_{train}(s_t)\vert.$$
-In the worst case, $\vert p_{mistake}(s_t) - p_{train}(s_t) \vert \leq 1$ since the distributions can be completely flipped. Then, we have $$\vert p_\theta(s_t) - p_{train}(s_t) \vert \leq 1 - (1 - \epsilon)^\top \leq \epsilon t$$ via the identity $(1 - \epsilon)^\top \geq 1 - \epsilon t$ for $\epsilon \in [0, 1]$.
+Consider state $s_t$ after $t$ steps. If we make no mistakes, our state $s_t$ will be in the training distribution. Otherwise, it'll be in some mistake distribution. We can split our policy distribution into these two cases, 
+$$
+p_\theta(s_t) = (1-\epsilon)^\top p_{train}(s_t) + [1 - (1 - \epsilon)^\top ]p_{mistake}(s_t).
+$$
 
-Finally, the expected value of the cost $c_t$ over time is the following: $$\begin{align*} \sum_t \mathbb{E}_{p_\theta} [c_t] &= \sum_t \sum_{s_t} p_\theta(s_t)c_t(s_t) \\ &\leq \sum_t \sum_{s_t} p_{train}(s_t) c_t(s_t) + \vert p_\theta(s_t) - p_{train}(s_t) \vert c_{max} \\ &\leq \sum_t \epsilon + \epsilon t \\ &= O(\epsilon T^2)\end{align*}$$
+Now, consider the [[👟 Total Variation Distance]], the sum of absolute value differences between probabilities, between $p_\theta$ and $p_{train}$, 
+$$
+\vert p_\theta(s_t) - p_{train}(s_t)\vert = [1 - (1 - \epsilon)^\top ] \vert p_{mistake}(s_t) - p_{train}(s_t)\vert.
+$$
+
+In the worst case, $\vert p_{mistake}(s_t) - p_{train}(s_t) \vert \leq 1$ since the distributions can be completely flipped. Then, we have 
+$$
+\vert p_\theta(s_t) - p_{train}(s_t) \vert \leq 1 - (1 - \epsilon)^\top \leq \epsilon t
+$$
+ via the identity $(1 - \epsilon)^\top \geq 1 - \epsilon t$ for $\epsilon \in [0, 1]$.
+
+Finally, the expected value of the cost $c_t$ over time is the following: 
+$$
+\begin{align*} \sum_t \mathbb{E}_{p_\theta} [c_t] &= \sum_t \sum_{s_t} p_\theta(s_t)c_t(s_t) \\ &\leq \sum_t \sum_{s_t} p_{train}(s_t) c_t(s_t) + \vert p_\theta(s_t) - p_{train}(s_t) \vert c_{max} \\ &\leq \sum_t \epsilon + \epsilon t \\ &= O(\epsilon T^2)\end{align*}
+$$
+
 
 In the second-to-last step, we use the fact that our model's expected error on $p_{train}$ is $\epsilon$ and plug in the inequality derived above.
 

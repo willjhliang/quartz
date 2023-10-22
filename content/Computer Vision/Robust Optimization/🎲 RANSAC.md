@@ -9,7 +9,11 @@ More specifically, the algorithm repeats the following for $k$ iterations:
 
 At the end, choose the model that has the fewest outliers. Alternatively, we can stop the loop when we fall within a certain number of outliers.
 
-Though this algorithm doesn't deterministically guarantee the best model, we have some probabilistic guarantees due to randomization. If $\epsilon$ is the probability of choosing a true inlier, the probability of choosing an all-inlier minimal sample set is $\epsilon^m$. Then, the probability of failing to find a model fit on this set is $(1-\epsilon^m)^k$, giving us a probability of success of $$p = 1 - (1-\epsilon^m)^k.$$
+Though this algorithm doesn't deterministically guarantee the best model, we have some probabilistic guarantees due to randomization. If $\epsilon$ is the probability of choosing a true inlier, the probability of choosing an all-inlier minimal sample set is $\epsilon^m$. Then, the probability of failing to find a model fit on this set is $(1-\epsilon^m)^k$, giving us a probability of success of 
+$$
+p = 1 - (1-\epsilon^m)^k.
+$$
+
 
 # Linear Regression
 In the most simple case, RANSAC can be used for linear regression. Our minimal sample set consists of two points, which define a line. The algorithm then tries many possible lines, and if there are enough inliers, we'll eventually randomly choose two inliers and get the desired linear model.

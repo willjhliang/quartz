@@ -18,7 +18,11 @@ The latent representation consists of "key" points, found via farthest point sam
 ![[20230401150754.png#invert|800]]
 
 # Triplane Diffusion
-Triplane diffusion models a shared occupancy field that takes tri-plane projections as input, $$o(x) = g(f_{XY}(x), f_{YZ}(x), f_{ZX}(x)).$$ These tri-planes and MLP $g$ are optimized by (enhanced) reconstruction loss on complete point cloud data.
+Triplane diffusion models a shared occupancy field that takes tri-plane projections as input, 
+$$
+o(x) = g(f_{XY}(x), f_{YZ}(x), f_{ZX}(x)).
+$$
+ These tri-planes and MLP $g$ are optimized by (enhanced) reconstruction loss on complete point cloud data.
 
 We can then train a [[🕯️ Diffusion Probabilistic Model]] on the tri-plane features, which gives us shape generation.
 

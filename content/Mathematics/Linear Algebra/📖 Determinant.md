@@ -1,5 +1,13 @@
-The determinant is an important property of a square [[🍱 Matrix]]. For a $2 \times 2$ matrix $A$, the determinant is $$\det A = \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc.$$
-For higher dimensional matrices, we use Laplace expansion along a row or column. Along a column $j$, $$\det A = \sum_{k=1}^n (-1)^{k+j}a_{kj}\det A_{k,j}$$ where $A_{k, j}$ is a sub-matrix we obtain by deleting row $k$ and column $j$.
+The determinant is an important property of a square [[🍱 Matrix]]. For a $2 \times 2$ matrix $A$, the determinant is 
+$$
+\det A = \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc.
+$$
+
+For higher dimensional matrices, we use Laplace expansion along a row or column. Along a column $j$, 
+$$
+\det A = \sum_{k=1}^n (-1)^{k+j}a_{kj}\det A_{k,j}
+$$
+ where $A_{k, j}$ is a sub-matrix we obtain by deleting row $k$ and column $j$.
 
 > [!info]
 > For an upper-triangular matrix, the determinant is the product of diagonal elements.

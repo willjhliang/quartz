@@ -28,6 +28,10 @@ def kahn(adj):
 ```
 
 # Runtime
-$$ O(V+E) $$
+
+$$
+ O(V+E) 
+$$
+
 
 We process each vertex and edge exactly once (similar to BFS), so Kahn runs in $O(V+E)$.

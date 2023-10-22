@@ -25,8 +25,16 @@ During training, we maintain hidden variables $\theta$, the multinomial distribu
 Given training data $D$, randomly assign each word in a document to a topic, then estimate $\theta$ by counting the topics that come up in each document.
 
 Then, alternate until convergence, starting with the M step, then E step.
-1. Given topic assignments, for each topic, estimate $$\beta = p(\text{word}=j \vert \text{topic}=k)$$
-2. Using $\beta$ from earlier, for every token estimate $$p(\text{topic}=k \vert \text{word}=j) \sim p(\text{word}=j \vert \text{topic}=k)p(\text{topic}=k)$$
+1. Given topic assignments, for each topic, estimate 
+$$
+\beta = p(\text{word}=j \vert \text{topic}=k)
+$$
+
+2. Using $\beta$ from earlier, for every token estimate 
+$$
+p(\text{topic}=k \vert \text{word}=j) \sim p(\text{word}=j \vert \text{topic}=k)p(\text{topic}=k)
+$$
+
    We can use this probability to pick new topics for each word, giving us $z$ and $\theta$.
 
 # Prediction

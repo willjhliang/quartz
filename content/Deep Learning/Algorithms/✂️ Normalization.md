@@ -1,4 +1,8 @@
-Normalization is a general technique changing the scale of a certain distribution. In the context of machine learning, we use it to force multiple features (random variables) to have similar scales. Formally, to normalize some feature $x_i$, we have $$x_i' = \frac{x_i - \mu_i}{\sigma_i}$$ where $\mu_i$ and $\sigma_i$ are the mean and standard deviation of $x_i$.
+Normalization is a general technique changing the scale of a certain distribution. In the context of machine learning, we use it to force multiple features (random variables) to have similar scales. Formally, to normalize some feature $x_i$, we have 
+$$
+x_i' = \frac{x_i - \mu_i}{\sigma_i}
+$$
+ where $\mu_i$ and $\sigma_i$ are the mean and standard deviation of $x_i$.
 
 This technique is commonly used in data preparation, but there are also numerous methods employed during network training. Four of the most common ones are below, with the blue area highlighting the normalized section.
 

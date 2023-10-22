@@ -24,7 +24,11 @@ def prim(adj):
 ```
 
 # Runtime
-$$ O(E\lg V) $$
+
+$$
+ O(E\lg V) 
+$$
+
 
 Assuming our input is valid (that $G$ does have a MST), $E \geq V - 1$ since it must be connected. Each priority queue pop and push takes $O(\lg V)$, and we perform these operations once for each vertex and edge.
 

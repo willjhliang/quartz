@@ -1,6 +1,14 @@
 Markov random fields use an undirected graph to model dependences over a probability distribution. For each clique $c$ in its graph, [[🍪 Factor]] $\phi(x_c)$ measures the degree of dependence between variables in the clique; specifically, given a configuration of values for the variables, $\phi(x_c)$ returns a high value if it's probable.
 
-Using factors, we construct a probability distribution $$p(x) = \frac{1}{Z}\prod_{c \in C} \phi(x_c)$$ where $C$ is the set of cliques and $Z$ is the partition function $$Z = \sum_x \prod_{c \in C} \phi(x_c)$$ that ensures the distribution is valid.
+Using factors, we construct a probability distribution 
+$$
+p(x) = \frac{1}{Z}\prod_{c \in C} \phi(x_c)
+$$
+ where $C$ is the set of cliques and $Z$ is the partition function 
+$$
+Z = \sum_x \prod_{c \in C} \phi(x_c)
+$$
+ that ensures the distribution is valid.
 
 This form of the graphical model is extremely general. In fact, a [[🚨 Bayesian Network]] can be represented in this form using the transformation (called moralization) below.
 

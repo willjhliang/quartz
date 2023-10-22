@@ -1,4 +1,12 @@
-We commonly use a [[🍱 Matrix]] to encode systems of linear equations. Specifically, a system $$\begin{gather*} a_{11}x_1 + \ldots + a_{1n}x_n = b_1 \\ a_{21}x_1 + \ldots + a_{2n}x_n = b_2 \\ \ldots \\ a_{m1}x_1 + \ldots + a_{mn}x_n = b_m \end{gather*}$$ can be written as $$\begin{bmatrix}a_{11} & \ldots & a_{1n} \\ \vdots & & \vdots \\ a_{m1} & \ldots a_{mn}\end{bmatrix}\begin{bmatrix}x_1 \\ \vdots \\ x_n\end{bmatrix} = \begin{bmatrix}b_1 \\ \vdots \\ b_m\end{bmatrix}.$$
+We commonly use a [[🍱 Matrix]] to encode systems of linear equations. Specifically, a system 
+$$
+\begin{gather*} a_{11}x_1 + \ldots + a_{1n}x_n = b_1 \\ a_{21}x_1 + \ldots + a_{2n}x_n = b_2 \\ \ldots \\ a_{m1}x_1 + \ldots + a_{mn}x_n = b_m \end{gather*}
+$$
+ can be written as 
+$$
+\begin{bmatrix}a_{11} & \ldots & a_{1n} \\ \vdots & & \vdots \\ a_{m1} & \ldots a_{mn}\end{bmatrix}\begin{bmatrix}x_1 \\ \vdots \\ x_n\end{bmatrix} = \begin{bmatrix}b_1 \\ \vdots \\ b_m\end{bmatrix}.
+$$
+
 
 # Gaussian Elimination
 The general solution to such a system consists of a particular solution, a specific value for $x_1, \ldots, x_n$ summed with all solutions for $Ax = 0$. We can find these solutions by applying elementary transformations listed below to the augmented matrix $\begin{bmatrix} A & b \end{bmatrix}$ that preserve the solution set. This process is known as Gaussian elimination.

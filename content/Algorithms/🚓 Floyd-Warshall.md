@@ -20,6 +20,10 @@ def floyd_warshall(adj):
 ```
 
 # Runtime
-$$ O(V^3) $$
+
+$$
+ O(V^3) 
+$$
+
 
 We perform a triple-nested loop over the vertices, giving us $O(V^3)$.

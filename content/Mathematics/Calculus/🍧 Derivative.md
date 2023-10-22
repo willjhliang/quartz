@@ -1,4 +1,12 @@
-For a univariate function $y = f(x)$, the difference quotient $$\frac{\delta y}{\delta x} = \frac{f(x + \delta x) - f(x)}{\delta x}$$ approximates the slope at $x$. As $\delta x \rightarrow 0$, we get the derivative, $$\frac{df}{dx} = \lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{f(h)}$$ that points in the direction of steepest ascent.
+For a univariate function $y = f(x)$, the difference quotient 
+$$
+\frac{\delta y}{\delta x} = \frac{f(x + \delta x) - f(x)}{\delta x}
+$$
+ approximates the slope at $x$. As $\delta x \rightarrow 0$, we get the derivative, 
+$$
+\frac{df}{dx} = \lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{f(h)}
+$$
+ that points in the direction of steepest ascent.
 
 # Differentiation Rules
 The following are the four core differentiation rules.

@@ -31,7 +31,11 @@ Either way, models are usually designed for one problem type:
 
 
 ## Priors
-Classical machine learning models generally have statistical and mathematical roots and are largely reliant on the smoothness prior—that the function we learn should be smooth within a small region, $$f(x) \approx f(x + \epsilon).$$
+Classical machine learning models generally have statistical and mathematical roots and are largely reliant on the smoothness prior—that the function we learn should be smooth within a small region, 
+$$
+f(x) \approx f(x + \epsilon).
+$$
+
 
 In more complex problems, classical methods run into problems. As the dimensionality of the problem space increases, we run into the [[☠️ Curse of Dimensionality]]. The smoothness prior is not sufficient to generalize higher dimensional problem spaces as there aren't enough samples to cover the space. Rather, we have the [[🪐 Manifold Hypothesis]], which states that samples lie on a low-dimensional subspace of the full problem space.
 
