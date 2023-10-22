@@ -1,4 +1,4 @@
-Signals are sent to a process by the [[⚙️ Operating System]] to interrupt the execution—for example, to terminate or to stop the process. The OS can send these signals for a variety of reasons, for example due to user input (`ctrl-C`, `ctrl-Z`) or due to another process' `kill()` call.
+Signals are sent to a process by the [[⚙️ Operating Systems]] to interrupt the execution—for example, to terminate or to stop the process. The OS can send these signals for a variety of reasons, for example due to user input (`ctrl-C`, `ctrl-Z`) or due to another process' `kill()` call.
 
 Whenever a signal is received, the process runs a handler function that responds to the signal. This interrupts the currently-running code and will return to it after the handler finishes.
 

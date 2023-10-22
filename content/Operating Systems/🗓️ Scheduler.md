@@ -1,4 +1,4 @@
-The scheduler is a part of the [[⚙️ Operating System]] kernel that decides which process to run. It makes a decision whenever a process starts (arrives but not executing), finishes, blocks (waiting on something), or has run for a certain amount of time.
+The scheduler is a part of the [[⚙️ Operating Systems]] kernel that decides which process to run. It makes a decision whenever a process starts (arrives but not executing), finishes, blocks (waiting on something), or has run for a certain amount of time.
 
 Scheduling is crucial to maintain the illusion of multiprocessing, and scheduling algorithms must consider many factors:
 1. Fairness: every program needs to run.

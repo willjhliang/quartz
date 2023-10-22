@@ -1,4 +1,4 @@
-An interrupt transfers control from some running program to the [[⚙️ Operating System]] kernel in response to some event. Some examples include arithmetic overflow, page fault, or I/O.
+An interrupt transfers control from some running program to the [[⚙️ Operating Systems]] kernel in response to some event. Some examples include arithmetic overflow, page fault, or I/O.
 
 Each event is stored in a table as some unique identifier. Each identifier is associated with a function handler, which executes code that deals with the event.
 

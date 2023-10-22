@@ -1,4 +1,4 @@
-Threads are sequential execution streams within a [[💼 Process]]. In most [[⚙️ Operating System]]s, threads are the unit of scheduling.
+Threads are sequential execution streams within a [[💼 Process]]. In most [[⚙️ Operating Systems]]s, threads are the unit of scheduling.
 
 While each process has its own address space, resources, and security, each thread has its own stack, stack pointer, program counter, and registers—*but shared address space*. Thus, threads see the same heap and globals and can communicate via this memory.
 
