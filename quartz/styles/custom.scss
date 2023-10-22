@@ -2,40 +2,41 @@
 
 // put your custom CSS here!
 
+// Custom font
 :root {
-    // Custom font
     --headerFont: "Computer Modern Serif", serif !important;
     --bodyFont: "Computer Modern Serif", serif !important;
     --codeFont: "Computer Modern Typewriter", monospace !important;
 }
 
+// Remove internal link highlight
 a.internal {
-    // Remove internal link highlight
     background-color: transparent;
 }
 
+// Make table of contents taller
 ul.overflow, ol.overflow {
-    // Make table of contents taller
     max-height: calc(100vh - 16em);
 }
 
+// Center images
 img {
-    // Center images and latex
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-p,
-ul,
-text,
-a,
-tr,
-td,
-li,
-ol,
-ul {
-    // Disable hyphens
+// Disable hyphens
+p, ul, text, a, tr, td, li, ol, ul {
     hyphens: none;
     -webkit-hyphens: none;
+}
+
+// Edge case for multiline explorer folders
+// Aline arrow to first line of text instead of center
+.folder-container {
+    align-items: start;
+}
+.folder-icon {
+    margin-top: 6px;
 }

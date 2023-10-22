@@ -11,6 +11,12 @@ const isElement = (target: EventTarget | null): target is Element =>
 const isLocalUrl = (href: string) => {
   try {
     const url = new URL(href)
+    // Edge case: navigating from notes github pages to personal github pages
+    // should treat personal site as external
+    console.log(url.pathname)
+    if (url.pathname == "/") {
+        return false
+    }
     if (window.location.origin === url.origin) {
       return true
     }
