@@ -19,8 +19,8 @@ ul.overflow, ol.overflow {
     max-height: calc(100vh - 16em);
 }
 
-img {
-    // Center image
+img, svg {
+    // Center images and latex
     display: block;
     margin-left: auto;
     margin-right: auto;
