@@ -15,9 +15,9 @@ const config: QuartzConfig = {
     theme: {
       typography: {
         // Overridden in custom.scss
-        header: "",
-        body: "",
-        code: "",
+        header: "Lora",
+        body: "Lora",
+        code: "Inconsolata",
       },
       colors: {
         lightMode: {
