@@ -16,7 +16,7 @@ a.internal {
 
 // Make table of contents taller
 ul.overflow, ol.overflow {
-    max-height: calc(100vh - 16em);
+    max-height: calc(100vh - 16rem);
 }
 
 // Center images
@@ -40,3 +40,10 @@ p, ul, text, a, tr, td, li, ol, ul {
 .folder-icon {
     margin-top: 6px;
 }
+
+// Prevent emojis from affecting line height
+.breadcrumb-element a {
+    line-height: 1.6rem;
+}
+
+// Note: disabling custom selection color is done in base.scss
