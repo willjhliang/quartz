@@ -46,4 +46,9 @@ p, ul, text, a, tr, td, li, ol, ul {
     line-height: 1.6rem;
 }
 
+// Decrease table line height
+table>* {
+    line-height: 1.6rem;
+}
+
 // Note: disabling custom selection color is done in base.scss
