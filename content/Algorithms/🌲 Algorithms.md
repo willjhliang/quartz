@@ -14,4 +14,4 @@ Algorithms (and data structures) studies how we can efficiently solve common com
 1. [[🌳 Binary Search Tree]] supports quick search and insert for sorted data.
 2. [[🗻 Heap]] maintains min/max pops of a sequence.
 3. [[🗼 Union-Find]] tracks disjoint sets.
-4. [[📍 Hash Maps]] maps keys to values.
+4. [[📍 Hashmap]] maps keys to values.

@@ -1,4 +1,4 @@
-A process is an instance of a program that is being executed by the [[⚙️ Operating Systems]]. Each process has its own memory (code, heap, stack), registers, and other resources.
+A process is an instance of a program that is being executed by the [[⚙️ Operating System]]. Each process has its own memory (code, heap, stack), registers, and other resources.
 
 # Stack and Heap
 The stack contains local variables and information for local functions, all organized in a stack frame for each function call. The heap contains dynamically-allocated data for anything that's required out of scope or whose size is only known during runtime.

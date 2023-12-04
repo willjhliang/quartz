@@ -1,6 +1,0 @@
-
-# Blind
-
-# Vision-Based
-
-## Parkour
