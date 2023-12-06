@@ -21,4 +21,4 @@ To keep track of all processes that their states, the OS maintains a table of pr
 Processes are created from forking another process (via the `fork()` function). Whenever this happens, both parent and (newly created) child continue running the same code, but they run different branches depending on the `fork()` output (`child_pid` for the parent, `0` for the child). The child receives a cloned version of the parent's memory, making it entirely separate.
 
 # Process Groups
-Processes are associated together in groups, which allows us to manage multiple processes at once. For example, [[🚥 Signal]]s can be sent to all processes in a group.
+Processes are associated together in groups, which allows us to manage multiple processes at once. For example, [[🗼 Signal]]s can be sent to all processes in a group.

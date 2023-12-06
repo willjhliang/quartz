@@ -9,7 +9,7 @@ In a basic hardware system, a single CPU reads and executes instructions sequent
 However, multiprocessing gives the illusion of multiple simultaneously-running programs by interleaving the execution of the programs. These processes are called "concurrent"—control flows overlapping in time, with one flow running at any specific moment. Note that this is slightly different from parallel processes, where there can be multiple flows running at the same moment in time (requiring multiple processors).
 
 # Control Flow
-Control flow is the sequence of instructions a processor executes. Individual programs can control the flow with jumps, branches, calls, and returns, but they only respond to program state. Changes to the system state—I/O, timers, networking, and more—also change the control flow, either with [[⏰ Interrupt]]s, context switches, or [[🚥 Signal]]s.
+Control flow is the sequence of instructions a processor executes. Individual programs can control the flow with jumps, branches, calls, and returns, but they only respond to program state. Changes to the system state—I/O, timers, networking, and more—also change the control flow, either with [[⏰ Interrupt]]s, context switches, or [[🗼 Signal]]s.
 
 ## Context Switch
 A context switch passes control from one process to another. Each time this happens, user code stops, kernel code responsible for the context switch runs, and then another user code runs.
