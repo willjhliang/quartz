@@ -21,4 +21,4 @@ While this neatly organizes memory and generally minimizes external fragmentatio
 ## Slab Algorithm
 The slab allocator restricts memory management to a single size that can be allocated or freed. We first specify some fixed chunk of memory as a slab; the slab can then be broken into the fixed-sized pieces called objects. If more memory is needed, we create another slab.
 
-In the kernel, we use this slab algorithm *on top of* the buddy algorithm with multiple slabs and object sizes, allowing us to allocate objects within slabs of memory managed by the buddy algorithm.
+In the kernel, we use this slab algorithm *on top of* the buddy algorithm—the buddy algorithm allocates chunks of memory for multiple slabs and object sizes. This gives us a degree of flexibility while retaining the benefits of the slab's quick memory management.

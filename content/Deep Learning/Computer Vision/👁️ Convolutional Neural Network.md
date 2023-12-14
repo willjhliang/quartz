@@ -4,7 +4,7 @@ Convolutional neural networks (CNNs) apply this idea in 2D; instead of a flat la
 
 ![[20221229103206.png#invert|400]]
 
-Each layer has multiple 3D filters, defined by its dimensions, stride, and padding; each filter consists of weights, and we apply these filters onto the activations of the previous layer. One filter results in one 2D matrix, and stacking these matrices gives us the 3D tensor.
+Each layer has multiple 3D filters, defined by its dimensions, stride, and padding; each filter consists of weights, and we convolve these filters with the activations of the previous layer (see [[♻️ Convolution]]). One filter results in one 2D matrix, and stacking these matrices gives us the 3D tensor.
 
 ## Max Pool
 Max pool layers are used to reduce the first two dimensions of a 3D tensor, partitioning the input and getting the maximum value for each. Note that we use maximum instead of average because most of the input is zero, and we want to capture strong activations instead of muddying the signals with an average.
@@ -26,4 +26,4 @@ Crucially, the convolution operation maintains translation [[🪞 Equivariance]]
 
 Though the individual convolution operation is equivariant, our entire CNN applies other layers as well (like max pooling or flattening). As a result, the entire network has translation [[🗿Invariance]]—if we translate the input, our output will stay (approximately) the same.
 
-Due to this invariance, significant data augmentation techniques can be used to increase our dataset size. Common strategies include flipping the image, slightly cropping the image or translating it, or applying a color filter. 
+Due to this invariance, significant data augmentation techniques can be used to increase our dataset size. Common strategies include flipping the image, slightly cropping the image or translating it, or applying a color filter.

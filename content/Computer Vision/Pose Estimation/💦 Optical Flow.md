@@ -1,28 +1,88 @@
 Optical flow finds the visual flow in videos, sort of like [[🍿 Two-View Stereopsis]] but with small baselines. Formally, we wish to compute the positional and angular velocities of the camera, $V$ and $\Omega$.
 
 # Local Search
-Since the frames of a video are extremely similar, we expect image patches to move very slightly in adjacent frames. Thus, the local search algorithm simply searches for matching patches in a nearby area, finding the one with most similar intensities: 
+Since the frames of a video are extremely similar, we expect image patches to move very slightly in adjacent frames. Let two adjacent frames be $I$ and $J$; the local search algorithm simply searches for matching pixels in a nearby area, finding the one with most similar intensities: 
 $$
-\min_{\delta x, \delta y} \sum_{x, y} (I_t(x, y) - I_{t+1}(x + \delta x, y + \delta y))^2.
+\min_d  (I(x) - J(x + d))^2
 $$
- Though this does work in practice, its main weakness is that it discretizes the offset, $\delta x$ and $\delta y$.
+ where $x$ is a point on the image and $d$ is the displacement.
 
-# Taylor Expansion Approximation
-To remedy this, we can assume that $\delta x, \delta y$ are small and approximate the new intensities with a [[🎤 Taylor Series]], 
+Though this does work in practice, its main weakness is that to search, we discretize $d$ and cannot recover an extremely-accurate flow.
+
+# Optimization
+Rather than performing an exhaustive search, we can instead frame optical flow as an optimization problem where we want to minimize 
 $$
-I_{t+1}(x + \delta x, y + \delta y) \approx I_{t+1}(x, y) + \begin{pmatrix}\frac{\delta I_{t+1}}{\delta x} & \frac{\delta I_{t+1}}{\delta y}\end{pmatrix} \begin{pmatrix}\delta x \\ \delta y\end{pmatrix} = I_{t+1}(x, y) + \nabla I_{t+1}^\top \begin{pmatrix}\delta x \\ \delta y\end{pmatrix}.
+E(d) = \Vert J(x + d) - I(x) \Vert^2.
 $$
- Then, the difference in intensities is 
+ The optimal $d$ is at a minima of this function, so its derivative must be zero. Thus, we have 
 $$
-I_t(x, y) - \left( I_{t+1}(x, y) + \nabla I_{t+1}^\top \begin{pmatrix}\delta x \\ \delta y\end{pmatrix} \right) = \Delta I_t(x, y) - \nabla I_{t+1}^\top \begin{pmatrix}\delta x \\ \delta y\end{pmatrix}.
-$$
- Both $\Delta I_t(x, y)$ and $\nabla I_{t+1}^\top$ can be computed directly, so minimizing the square of the above equation is a least-squares problem with the analytical answer 
-$$
-\begin{pmatrix}\delta x^* \\ \delta y^*\end{pmatrix} = \left( \sum_{x, y} \nabla I_{t+1}(x,y) \nabla I_{t+1}(x, y)^\top \right)^{-1} \left( \sum_{x, y} \Delta I_t(x, y) \nabla_{t+1}(x, y) \right).
+\frac{\partial E}{\partial d} = 2 \frac{\partial J(x+d)^\top}{\partial d}(J(x+d) - I(x)) = 0.
 $$
 
 
-## Texture Challenges
+Since a variation with $\partial d$ for $J(x+d)$ is equivalent to a variation in $x$, we can rewrite the fraction, giving us 
+$$
+\frac{\partial E}{\partial d} = 2 \frac{\partial J(x)^\top}{\partial x}(J(x+d) - I(x)) = 0
+$$
+ and revealing that the fraction is exactly the image gradient of $J$. Now, we need to solve for $d$, but $J$ is an image and thus a nonlinear function of the pixel locations, making this equation difficult.
+
+## Taylor Approximation
+To simplify our task, we can approximate $J(x + d)$ with a [[🎤 Taylor Series]], 
+$$
+J(x + d) \approx J(x) + \frac{\partial J(x)}{\partial x}d.
+$$
+ Visually, this is assuming that the shifted image is the sum of an unshifted version with its gradient, which "shaves" off edges.
+
+![[20231213194503.png#invert]]
+
+Now, our original optimization task turns into 
+$$
+E(d) = \Vert J(x) + \frac{\partial J(x)}{\partial x}d - I(x) \Vert^2 = \Vert \frac{\partial J(x)}{\partial x}d - (I(x) - J(x)) \Vert^2.
+$$
+ In this form, our problem looks very similar to the least squares problem, $\Vert Ax - b \Vert^2.$
+
+Indeed, we can plug our approximation back into our optimization equation, arriving at 
+$$
+2 \frac{\partial J(x)^\top}{\partial x}(J(x) + \frac{\partial J(x)}{\partial x}d - I(x)) = 0,
+$$
+ and reordering, we have 
+$$
+d = \left( \frac{\partial J(x)^\top}{\partial x} \frac{\partial J(x)}{\partial x} \right)^{-1}\frac{\partial J(x)^\top}{\partial x} (I(x) - J(x)),
+$$
+ exactly mirroring the least squares solution $x = (A^\top A)^{-1} A^\top b$.
+
+Another common form of this equation is 
+$$
+\frac{\partial J(x)^\top}{\partial x} \frac{\partial J(x)}{\partial x} d = \frac{\partial J(x)^\top}{\partial x} (I(x) - J(x)).
+$$
+ The coefficient on the left is the second moment matrix that describes, for each pixel, the second-order gradients. The term on the right is the difference between images, then multiplied with the second image's gradient. We can compute both terms, and thus we can find $d$.
+
+## Gradient Descent
+However, since we used a Taylor approximation, our first solution for $d$ might not be perfect. We can refine our result applying the displacement to $I_t$, then recompute everything again, apply it again, then recompute, and so on. Each iteration will decrease the error, and our final result is the cumulative displacement.
+
+## Windows
+Finally, one more thing to note is that we usually perform this optimization over small patches (windows) of an image rather than individual pixels. This objective is 
+$$
+\min_d E(d) = \sum_{x \in w} \Vert J(x + d) - I(x) \Vert^2
+$$
+ where $w$ is our window. With our Taylor approximation, we can absorb the sum into matrix form, 
+$$
+E(d) = \left\Vert \begin{bmatrix}J_x (x_1) & J_y(x_1) \\ J_x(x_2) & J_y(x_2) \\ \vdots & \vdots \end{bmatrix} \begin{bmatrix}d_x \\ d_y\end{bmatrix} - \begin{bmatrix}I(x_1) - J(x_1) \\ I(x_2) - J(x_2) \\ \vdots \end{bmatrix}\right\Vert^2,
+$$
+ and again apply the least squares solution $(A^\top A)^{-1} A^\top b$; simplifying, we find 
+$$
+A^\top A = \begin{bmatrix}\sum_i J_x(x_i)^2 & \sum_i J_x(x_i) J_y(x_i) \\ \sum_i J_y(x_i) J_x(x_i) & \sum_i J_y (x_i)^2\end{bmatrix} \text{ and } A^\top b = \begin{bmatrix}\sum_i J_x(x_i)(I(x_i) - J(x_i)) \\ \sum_i J_y(x_i)(I(x_i) - J(x_i))\end{bmatrix}.
+$$
+
+
+(Note that $x_i$ here denotes a point, as in $x_i = (x, y)$. Sorry for the odd notation.)
+
+# Large Displacements
+Our gradient operator $\nabla I_{t+1}(x, y)$ only covers the gradient of our second image. If the difference between images is too big, the gradient operator will not capture the first image, $I_t$, which makes the least-squares problem unsolvable.
+
+The most direct solution is to use a larger gradient kernel, allowing information to propagate across more pixels and hopefully incorporating parts of the first image. Alternatively, we can use the gaussian pyramid (from [[🔺 Image Pyramid]]) and perform optical flow on smaller images, thereby making the same kernel larger relative to the image.
+
+# Texture Challenges
 Our approach relies on the assumption that brightness stays similar and the absence of occlusions. We also need the patch to be sufficiently interesting for the left product to be invertible. As such, there are certain scenarios where this algorithm doesn't work well:
 1. "White wall" problem: in the absence of texture, we get no gradient and thus no flow.
 2. "Barber poll" problem: with one-dimensional texture, we get a constant gradient and insufficient information to compute the true flow. This is why the barber pole has an illusion of moving up or down when it's actually just rotating.

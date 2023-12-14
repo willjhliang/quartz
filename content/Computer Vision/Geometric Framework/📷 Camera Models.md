@@ -42,7 +42,7 @@ Conversely, parallel lines look parallel if the object is far from the camera. I
 
 ## Dolly Zoom
 
-![[20230206200616.gif#invert|300]]
+![[20230206200616.gif|300]]
 
 Dolly zoom is a special application of perspective distortion. It keeps the object size constant while shrinking or stretching the background.
 1. If parallel lines aren't parallel, we have small $Z$ and small $f$. In other words, we're close to the object with a small focal length.

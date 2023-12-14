@@ -14,10 +14,10 @@ Virtual memory is organized into units called pages; each page is a fixed size, 
 Similarly, physical memory is divided into page frames, which each frame being the same size as one virtual page. Pages stored in physical memory are each assigned a frame. This information is all tracked in the [[📄 Page Table]].
 
 # Page Replacement
-We don't have enough space to store all virtual pages in physical memory, so when physical memory gets full and we need to load a page, we need to replace another page and save it to the swap file on disk. To choose which page to evict, we follow a replacement policy.
+We don't have enough space to store all virtual pages in physical memory, so when physical memory gets full and we need to load a page, we need to replace another page and save it to the swap file on disk (if the dirty bit is set). To choose which page to evict, we follow a replacement policy.
 1. FIFO: evict the page that was been in memory the longest (first in).
 2. LRU: evict the page that has had the longest time since it was last used. Implementing this is tricky, but a common approximation is to set reference bit during page access and track it throughout set time intervals.
-3. Second chance: like FIFO, but if the reference bit is set, we move the entry to the end of the queue.
+3. Second chance: like FIFO, but if the reference bit is set, we move the entry to the end of the queue and reset the bit—essentially giving it a second chance.
 
 Note that the optimal policy is to replace the page that's furthest away from being used. This requires future information, making it impossible to implement, but it's a good benchmark to compare against replacement policies.
 
@@ -32,7 +32,7 @@ Virtual memory breaks down memory into pages, but in most machines, every byte h
 
 For a page size of 4 KB, we have 4096 (0x1000) addresses corresponding to this page. To specify a byte on this page, we thus need 12 bits—known as the page offset. The rest of the bits in our address is the virtual page number, which defines which virtual page to access. In other words, the virtual page number determines which page, and the page offset determines where in the page.
 
-Specifically, the virtual address is constructed as the concatenation of the virtual page number and the page offset. To translate a virtual address to a physical one, we perform the following steps:
+The virtual address is constructed as the concatenation of the virtual page number and the page offset. To translate a virtual address to a physical one, we perform the following steps:
 1. Derive the virtual page number from the address (get the first $n$ bits).
 2. Get the physical page number from the page table.
 3. Construct the physical address by concatenating the page offset to the physical page number.

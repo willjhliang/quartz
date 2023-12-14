@@ -13,13 +13,13 @@ Note that we use groups of 9 bits since each pointer is 8 bytes, so each level o
 Since most pages are usually unused, this tree has most pointers as `NULL`, thus saving the space of most unused entries. Also, memory access has spatial locality, so other memory accesses will usually be in nearby pages and thus the same nodes in the tree.
 
 ## Inverted Page Table
-Inverted pages tables stores one entry per physical page instead of virtual page (since there's a lot less physical memory than virtual memory). The table is implemented as a chaining hash table; a process indexes into it by hashing the virtual page number and process id, and then it checks the chain for the corresponding entry.
+Inverted page tables store one entry per physical page instead of virtual page (since there's a lot less physical memory than virtual memory). The table is implemented as a chaining hash table; a process indexes into it by hashing the virtual page number and process id, and then it checks the chain for the corresponding entry.
 
 # Translation Lookaside Buffer (TLB)
 Though the methods above improve space usage, they significantly decrease access speed. To improve this, we can keep a special piece of hardware memory called the TLB that stores recent virtual-to-physical page translations. When a translation is needed, the MMU checks the TLB as well as the page table for the physical page.
 
 We also need to make sure TLB entries are in sync with the page table.
-1. If a TLB is updated, the page table needs to update its dirty bit.
+1. If a TLB page is updated, the page table needs to update its dirty bit.
 2. If a page is evicted from the page table, its entry must be removed from the TLB.
 
 Moreover, the TLB must also be process-specific, so it either contains pid for each entry or clears its entries when switching processes.

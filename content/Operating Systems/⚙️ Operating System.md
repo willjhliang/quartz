@@ -1,7 +1,7 @@
 An operating system (OS) is a layer of abstraction between software and hardware in a computer. Its primary job is to manage [[💼 Process]]es on the system, ensuring that they're isolated from each other and providing an *illusion* of exclusive access to the processor. It also protects the system by serving as a middle-man between the running process (which can be malicious) and the hardware.
 
 # Kernel
-The kernel of an OS is the memory-resident OS code that's used for important functions such as context switching, the [[🗓️ Scheduler]], ==TBD==.
+The kernel of an OS is the memory-resident OS code that's used for important functions such as context switching, running the [[🗓️ Scheduler]], and handling [[⏰ Interrupt]]s.
 
 # Multiprocessing
 In a basic hardware system, a single CPU reads and executes instructions sequentially (known as control flow). Thus, we cannot run multiple programs at once.
