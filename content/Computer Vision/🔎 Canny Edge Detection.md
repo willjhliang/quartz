@@ -9,7 +9,7 @@ $$
 
 2. Compute magnitude of gradient, $I_m = \sqrt{I_x^2 + I_y^2}$.
 The above operations give us a rough idea of where edges are, but the detection is too soft and imprecise. To address this, we process $I_m$ to find the pixels with the "maximum" edge (non-maximum suppression):
-1. Compute edge orientation, $\theta = \text{atan2}(I_x, I_y).$
+1. Compute edge orientation, $\theta = \text{atan2}(I_y, I_x).$
 2. For each pixel, mark it as edge only if its gradient is the largest out of its two neighbors along the $\theta$ direction. The idea behind this is to extract the most significant area of the soft edges from $I_m$ (see image below).
 3. Filter the result with high (strong) and low (weak) thresholds on the gradient magnitude. Starting from strong edges, continue them with connected weak edges (Hysteresis).
 
