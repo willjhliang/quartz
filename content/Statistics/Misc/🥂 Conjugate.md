@@ -1,0 +1,3 @@
+Let $\mathcal{F}$ be a class of probability densities for data $p(y \vert \theta)$, and let $\Pi$ be a class of prior density for parameter $p(\theta)$. $\Pi$ is a conjugate of $\mathcal{F}$ if $p(\theta) \in \Pi \implies p(\theta \vert y) \in \Pi$. That is, if the posterior and prior belong in the same class of densities.
+
+Conjugates are commonly used in Bayesian [[📈 Statistics]] as prior distributions $p(\theta)$ for likelihood $p(y \vert \theta)$ because it makes the resulting posterior $p(\theta \vert y)$ a standard distribution.

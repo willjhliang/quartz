@@ -1,4 +1,4 @@
-Summary statistics describes how a random variable behaves, essentially summarizing the distribution.
+Summary statistics describes how a [[🪐 Random Variable]] behaves, essentially summarizing the distribution.
 
 > [!info]
 > The following will assume that we're operating over continuous space. However, the equations are roughly similar for discrete random variables if we substitute the integration for a summation.

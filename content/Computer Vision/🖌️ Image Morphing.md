@@ -1,14 +1,7 @@
 Image morphing finds the "average" between two objects. We're not simply averaging the the two object images; rather, we're also warping them to fit the same shape.
 
-# Cross Dissolve
-First, to blend the colors together, we can cross dissolve the images. This takes an average over the two images over a time interval $t \in [0, 1]$, 
-$$
-I' = (1-t)I_1 + tI_2.
-$$
-
-
 # Warping
-However, cross dissolving is not enough if parts of the images are not spatially aligned. To spatially manipulate the images, we need some external information on what corresponds with what. Specifically, we have a human label point correspondences—for example, where eyes are in each image.
+First, we need to spatially align parts of the image. To do so, we need some external information on what corresponds with what. Specifically, we have a human label point correspondences—for example, where eyes are in each image.
 
 ![[20231212232804.png]]
 
@@ -45,3 +38,10 @@ $$
 Now, when we move our triangle's $A, B, C$, we keep $\alpha, \beta, \gamma$ constant and can use the same equation to calculate new $(x, y)$ positions for our pixel.
 
 One important detail is that with forward warping, there might be parts of our resulting triangle that aren't warped onto, thereby creating holes. Instead, we should perform backward warping for each pixel in our target image, then get the color via interpolation within the source image.
+
+# Cross Dissolve
+Now, with the positions calculated, all we need to do is blend the color. We do this with cross dissolve, which takes an average over a time interval $t \in [0, 1]$, 
+$$
+I' = (1-t)I_1 + tI_2.
+$$
+
