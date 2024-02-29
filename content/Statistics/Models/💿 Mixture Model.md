@@ -22,12 +22,12 @@ p(y, I \vert \theta) = \prod_i \left( \frac{\alpha}{\sqrt{2\pi\sigma_1^2}} e^{-(
 $$
  However, we only have $y$ and not $I$; luckily, the [[🎉 Expectation Maximization]] algorithm serves to "fill in" this missing data. The steps are as follows:
 1. Start with initial values for $\theta = (\alpha, \mu_1, \mu_0, \sigma_1^2, \sigma_0^2)$.
-2. Repeat the following:
-	1. Expectation: calculate expected values for each $I_i$, 
+2. Expectation: calculate expected values for each $I_i$, 
 $$
 \hat{I}_i = \mathbb{E}[I_i \vert y_i, \theta].
 $$
 
-	2. Plug $\hat{I}_i$ into the likelihood $p(y, \hat{I} \vert \theta)$ and find new values $\hat{\theta}$ that maximize the likelihood; note that it can be easier to instead maximize the log likelihood.
+3. Plug $\hat{I}_i$ into the likelihood $p(y, \hat{I} \vert \theta)$ and find new values $\hat{\theta}$ that maximize the likelihood; note that it can be easier to instead maximize the log likelihood.
+4. Go back to step 2, repeat until convergence.
 
 The EM algorithm converges to a *fixed* set of values, providing only point estimates $\hat{\theta}$ for our parameters. ==TBD for posterior distribution===
