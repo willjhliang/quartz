@@ -1,3 +1,5 @@
+---
+---
 Camera intrinsics are inherent characteristics of the [[📷 Camera Models]] (usually the lens) that relate points in the 3D camera coordinate system to its projected location on the image plane. Specifically, the intrinsics are defined by the focal length $f$ and image center $(u_0, v_0)$. Knowing these values allows us to transform between the camera and image coordinate systems.
 
 Usually, the intrinsics are summarized as a matrix 

@@ -1,4 +1,4 @@
-BYOL (bootstrap your own latent) is a [[📖 Representation Learning]] method that uses two neural networks that learn from each other rather than a contrastive objective. We have online and target networks; the former will be constantly updated, and the latter is a time-lagged version of the former.
+BYOL (bootstrap your own latent) is a [[🪩 Representation Learning]] method that uses two neural networks that learn from each other rather than a contrastive objective. We have online and target networks; the former will be constantly updated, and the latter is a time-lagged version of the former.
 
 ![[20230406234731.png#invert|600]]
 

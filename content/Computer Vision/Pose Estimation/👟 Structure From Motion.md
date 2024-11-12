@@ -1,3 +1,5 @@
+---
+---
 Structure from motion deals with finding the rotation and translation between two views. Given correspondences $\{(u_1, v_1, u_2, v_2)_i \}$ and intrinsics $K_1, K_2$, our goal is to find $R, T$ from one camera to the other as well as depths $(\lambda, \mu)_i$ for each correspondence.
 
 ![[20230423101756.png#invert|400]]

@@ -10,7 +10,7 @@ Across these three problems, we also have a multitude of more specific scenarios
 1. Semi-supervised learning uses both labeled and unlabeled data, essentially combining unsupervised and supervised methods.
 2. Self-supervised learning frames unlabeled data as a supervised problem by extracting "pretext" tasks from the existing data (for example, in-painting).
 3. [[✋ Active Learning]] extends semi-supervised learning by allowing the model to select which data samples to label next.
-4. [[📖 Representation Learning]] tackles learning latent embeddings of the data—summaries of the data with semantically-meaningful information.
+4. [[🪩 Representation Learning]] tackles learning latent embeddings of the data—summaries of the data with semantically-meaningful information.
 5. [[🎨 Generative Modeling]] learns generative models that can "sample" from the data distribution, creating synthetic data that resembles its input.
 
 # Models
@@ -22,13 +22,12 @@ With simple data, [[🏭 Linear Factor Model]]s can capture basic distributions.
 
 Either way, models are usually designed for one problem type:
 
-| Supervised Learning      | Unsupervised Learning               | Reinforcement Learning               |
-| ------------------------ | ----------------------------------- | ------------------------------------ |
-| [[🏦 Linear Regression]] | [[🎒 K-Means Clustering]]           | [[⌛️ Temporal Difference Learning]]                    |
-| [[💭 Decision Tree]]     | [[📄 Latent Dirichlet Allocation]]  | [[🚓 Policy Gradient]]                         |
-| [[👓 Perceptron]]        | [[🗜️ Principle Component Analysis]] | [[🧨 Dynamic Programming]] |
-| [[🔥 Adaboost]]          | [[📼 Gaussian Mixture Model]]       | [[🪙 Monte Carlo Control]]                                     |
-
+| Supervised Learning      | Unsupervised Learning                | Reinforcement Learning              |
+| ------------------------ | ------------------------------------ | ----------------------------------- |
+| [[🏦 Linear Regression]] | [[🎒 K-Means Clustering]]            | [[⌛️ Temporal Difference Learning]] |
+| [[💭 Decision Tree]]     | [[📄 Latent Dirichlet Allocation]]   | [[🚓 Policy Gradient]]              |
+| [[👓 Perceptron]]        | [[🗜️ Principle Component Analysis]] | [[🧨 Dynamic Programming]]          |
+| [[🔥 Adaboost]]          | [[📼 Gaussian Mixture Model]]        | [[🪙 Monte Carlo Control]]          |
 
 ## Priors
 Classical machine learning models generally have statistical and mathematical roots and are largely reliant on the smoothness prior—that the function we learn should be smooth within a small region, 

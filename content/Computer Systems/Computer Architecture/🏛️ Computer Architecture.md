@@ -1,0 +1,1 @@
+Computer architecture studies the design of a computer's low-level components, from the instruction set architecture ([[📋 ISA]]) to the microarchitecture. The ISA is an interface that details the supported hardware instructions, which allows software to run. The microarchitecture encompasses the processor, memory, and I/O design that implements the ISA.

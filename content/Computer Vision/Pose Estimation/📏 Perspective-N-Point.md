@@ -1,3 +1,5 @@
+---
+---
 Perspective-$N$-point estimates camera pose from $N$ correspondences; formally, given $N$ correspondences from world points to calibrated camera points $(X_w, Y_w, Z_w, x_c, y_c)$, we can find the rotation $R$ and translation $T$ of the camera.
 
 First, we have that each point satisfies the equation 

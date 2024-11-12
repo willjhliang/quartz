@@ -1,3 +1,5 @@
+---
+---
 Coplanar PNP is a variant of the standard [[📏 Perspective-N-Point]] problem with the additional guarantee that the 3D points lie on the same plane. If we let them all lie on the ground, $Z_w = 0$, our goal is the following: given $N$ correspondences from world points to pixels $(X_w, Y_w, u, v)$ and the camera intrinsics $K$, find the rotation $R$ and translation $T$ of the camera.
 
 The [[🗺️ Coordinate Systems#World Coordinates to Image Coordinates]] equation is given by 

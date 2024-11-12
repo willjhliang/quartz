@@ -1,4 +1,4 @@
-The normal model measures continuous values and is commonly used for random variables whose distributions are unknown. For mean $\mu$ and variance $\sigma^2$, the model produces 
+ The normal model measures continuous values and is commonly used for random variables whose distributions are unknown. For mean $\mu$ and variance $\sigma^2$, the model produces 
 $$
 y_i \sim \text{Normal}(\mu, \sigma^2)
 $$

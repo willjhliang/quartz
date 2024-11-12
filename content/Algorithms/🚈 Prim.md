@@ -1,3 +1,5 @@
+---
+---
 # Minimum Spanning Tree Problem
 Find the spanning tree of weighted-graph $G$ (connects all vertices) that has minimum cumulative weight.
 
@@ -10,12 +12,16 @@ from heapq import heappush, heappop
 
 def prim(adj):
 	ret = 0
-	dist = [float('inf') for _ in range(len(adj)]
+	dist = [float('inf') for _ in range(len(adj))]
 	dist[0] = 0
+	vis = set()
 	pq = [(0, 0)]
 	while len(pq) > 0:
 		d, c = heappop(pq)
+		if c in vis:
+			continue
 		ret += d
+		vis.add(c)
 		for n, w in adj[c]:
 			if w < dist[n]:
 				dist[n] = w

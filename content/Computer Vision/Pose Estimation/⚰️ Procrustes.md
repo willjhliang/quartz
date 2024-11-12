@@ -1,3 +1,5 @@
+---
+---
 Procrustes, also called the 3D-3D correspondence problem, finds the camera pose $R$ and $T$ from $N$ 3D-3D point correspondences $(A, B)$.
 
 First, note that we only need $3$ points to find the transformation. We'll solve the $N=3$ problem first, then generalize to any $N$.

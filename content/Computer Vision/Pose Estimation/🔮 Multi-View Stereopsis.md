@@ -1,3 +1,5 @@
+---
+---
 Multi-view stereopsis generalizes [[🍿 Two-View Stereopsis]] to $N$ views; given these images and their relative $R$ and $T$, our goal is to reconstruct the 3D world model. The goal is to check correspondences and infer occupancies and colors.
 
 There are a multitude of approaches to this problem. A few of the more common ones are below.

@@ -1,3 +1,5 @@
+---
+---
 Consider some binary categorization of people (for example, yes or no recidivism). For a model $c$ that assigns individuals into bins with scores $v$ that represent the positive probability, we can define three notions of fairness:
 1. Group calibration: scores are calibrated across groups and bins, so 
 $$

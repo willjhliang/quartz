@@ -1,3 +1,5 @@
+---
+---
 Proximal policy optimization (PPO) is a direct successor to [[🏦 Trust Region Policy Optimization]] that uses a different methodology to deal with the KL constraint. We still follow the natural gradient objective 
 $$
 \max_{\theta'} \bar{A}(\theta') \text{ such that } D_{KL}(\pi_{\theta'} \Vert \pi_\theta) \leq \epsilon,

@@ -1,3 +1,5 @@
+---
+---
 # Lens Model
 Our camera contains sensors and a lens. The lens serves to focus light rays from an object and forms an image behind the lens.
 

@@ -1,3 +1,5 @@
+---
+---
 Two-view stereopsis is the problem of finding per-pixel depth given two camera views and their relative pose ($R$ and $T$). To do so, we need to match features across the two views and triangulate its position relative to the camera.
 
 # Disparity

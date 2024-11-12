@@ -1,3 +1,5 @@
+---
+---
 # Theory
 Latent Dirichlet Allocation is an unsupervised method for document classification that comes up with the topic classes on its own.
 

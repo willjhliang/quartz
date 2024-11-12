@@ -1,3 +1,5 @@
+---
+---
 Geometric perception works in three coordinate systems:
 1. Image coordinate system, which is 2-dimensional, defined as pixels in the image. The pixels lie along the image plane, which is perpendicular to the optical axis of the camera.
 2. Camera coordinate system, where the $z$ axis is the optical axis. The $z$ axis intersects the image plane at $(u_0, v_0)$.

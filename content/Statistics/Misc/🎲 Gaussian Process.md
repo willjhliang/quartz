@@ -1,0 +1,3 @@
+A gaussian process models a function $f$ at discrete test points $Y$ given training points $X$ and $f(x)$ for each $x \in X$. Unlike other models, gaussian processes produce estimates for only the test points; however, their advantage lies in additionally providing the *uncertainty* of their estimates.
+
+A gaussian process, at its core, models a multivariate [[👑 Gaussian]] distribution over $X$ and $Y$ together. We first start with a prior distribution, $P_Y$, which defines the model's shape (periodic, linear or something else) without knowing the training data. Then, given training data $X$, we can construct a posterior $P_{Y\vert X}$. ==TODO FINISH==

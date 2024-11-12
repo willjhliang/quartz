@@ -1,3 +1,5 @@
+---
+---
 Homographies, or projective transformations, project points from a plane onto another plane and is defined by an invertible matrix transformation from $\mathbb{P}^2$ to $\mathbb{P}^2$. Specifically, the 3x3 transformation matrix $H$ with $\det H \neq 0$ maps 
 $$
 p' \sim Hp.

@@ -1,3 +1,5 @@
+---
+---
 Visual odometry is the problem of determining camera position and orientation from a video of the trajectory. One of the most popular pipelines is ORB-SLAM, pictured below.
 
 ![[20230423231024.png#invert|600]]

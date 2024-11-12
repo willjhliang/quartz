@@ -1,4 +1,4 @@
-The multi-armed, or $k$-armed, bandit is a simplification of the general reinforcement learning problem. We're in a single state, and we're given the option to choose between $k$ different actions, each yielding some stochastic reward; this is analogous to choosing $k$ different arms of a bandit, or slot machine, hence the name.
+The multi-armed, or $k$-armed, bandit is a simplification of the general [[♟️ Reinforcement Learning]] problem. We're in a single state, and we're given the option to choose between $k$ different actions, each yielding some stochastic reward; this is analogous to choosing $k$ different arms of a bandit, or slot machine, hence the name.
 
 Our objective, as usual, is to maximize expected total reward. Let the true value of an action $a$ be 
 $$

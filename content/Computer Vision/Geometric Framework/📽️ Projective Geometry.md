@@ -1,3 +1,5 @@
+---
+---
 # Homogeneous Coordinates
 A point $(x, y) \in \mathbb{R}^2$ on the image plane can be extended to homogeneous coordinates with 
 $$
@@ -15,7 +17,7 @@ $$
 $$
 
 
-These equivalences define equivalence classes in $\mathbb{R}^3 \setminus \{(0, 0, 0\}$, each of which constitutes a ray. The projective plane $\mathbb{P}^2$ is the set of all rays.
+These equivalences define equivalence classes in $\mathbb{R}^3 \setminus \{(0, 0, 0)\}$, each of which constitutes a ray. The projective plane $\mathbb{P}^2$ is the set of all rays.
 
 To go back from $\mathbb{P}^2$ to $\mathbb{R}^2$, we must find the spot on the ray with the third coordinate equal to $1$. Thus, 
 $$

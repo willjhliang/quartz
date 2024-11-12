@@ -1,3 +1,5 @@
+---
+---
 Epipolar geometry describes the relationship between two cameras in stereo vision (like the arrangement below).
 
 ![[20230423104143.png#invert|300]]

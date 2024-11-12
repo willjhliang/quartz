@@ -10,7 +10,7 @@ $$
 $$
  In this form, it's more obvious that the fundamental problem is that we're selecting the best action via the argmax over the noisy estimate, and then we're evaluating that action using the same noise. The immediate solution, then, is to avoid using the same noise to pick our argmax and max computation.
 
-Double-Q Learning [^1][^2] decorrelates the noise between action selection and evaluation by using separate networks, $A$ and $B$. Our update rule is slightly tweaked, 
+Double-Q Learning decorrelates the noise between action selection and evaluation by using separate networks, $A$ and $B$. Our update rule is slightly tweaked, 
 $$
 Q_{\phi_A} (s, a) = r(s, a) + \gamma Q_{\phi_B}(s', \arg\max_{a'}Q_{\phi_A}(s' ,a')),
 $$
@@ -20,7 +20,3 @@ In practice, we can use "current" and "target" networks (from [[👾 Deep Q-Lear
 $$
 y = r(s, a) + \gamma Q_{\phi'}(s', \arg\max_{a'} Q_\phi(s', a')).
 $$
-
-
-[^1]: [Double Q-learning (Van Hasselt, 2010)](https://proceedings.neurips.cc/paper_files/paper/2010/file/091d584fced301b442654dd8c23b3fc9-Paper.pdf)
-[^2]: [Deep Reinforcement Learning with Double Q-learning (Van Hasselt, 2015)](https://arxiv.org/pdf/1509.06461.pdf)

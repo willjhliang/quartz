@@ -1,3 +1,5 @@
+---
+---
 Geometric perception analyzes images using geometry and linear algebra.
 
 [[📷 Camera Models]], specifically the pinhole model, allow us to project points in the 3D world to an image. To relate pixels on these images and points in the world, we use [[📽️ Projective Geometry]] across the image, camera, and world [[🗺️ Coordinate Systems]].

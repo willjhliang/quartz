@@ -1,3 +1,5 @@
+---
+---
 Faster R-CNN is a two-stage object detection network that builds on ideas from R-CNN and Fast R-CNN. Following the traditional object detection pipeline, we have a region proposal stage and a classification stage; the key innovation in Faster R-CNN is that both stages, trained as [[👁️ Convolutional Neural Network]]s, operate on a feature map rather than the original image.
 
 We first use a feature network (such as VGG-16) to convert the image into a feature map. We'll use this feature map for both region proposal and classification.

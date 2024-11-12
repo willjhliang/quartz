@@ -1,3 +1,5 @@
+---
+---
 Variational autoencoders are generative models that define an intractable density function using latent variable $z$: 
 $$
 p_\theta(x) = \int_z p_\theta(x \vert z)p_\theta(z) dz
